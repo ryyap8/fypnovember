@@ -1,0 +1,831 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+body {
+    background: #f7f3e9;
+}
+
+/* Navigation bar icon */
+.fa-utensils {
+    background: #f58b00;
+    color: white;
+    font-size: 22px;   
+    padding: 8px;     
+    border-radius: 6px;
+}
+
+.fa-bowl-food {
+    color: #f58b00; 
+}
+
+.fa-heart {
+    color: #e74c3c; 
+}
+
+.fa-route {
+    color: #7f0288; 
+}
+
+.fa-chart-line {
+    color: #595188; 
+}
+
+/* Navigation bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 22px;
+}
+
+.nav-center a {
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #43464b;
+}
+
+.nav-right {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.nav-right a {
+    text-decoration: none;
+    font-size: 17px;
+    color: #252729;
+}
+
+.nav-right button {
+    border: none;
+    padding: 10px 18px;
+    background: #f58b00;
+    font-size: 17px;
+    color: white;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.profile-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar-profile-image {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.profile-link .navbar-user-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #fff3d6;
+    color: #f5c25a;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    font-size: 16px;
+    line-height: 32px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+
+    box-sizing: border-box;
+}
+
+/* =========================
+   NAVIGATION LINKS
+========================= */
+#navCenter {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+#navCenter a {
+    position: relative;
+    text-decoration: none;
+    color: #333;
+    padding: 8px 0;
+}
+
+/* Active tab */
+#navCenter a.active {
+    background: none;
+    color: #f58b00;
+}
+
+/* Underline */
+#navCenter a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+    height: 3px;
+    background-color: #f58b00;
+    border-radius: 3px;
+}
+
+/* Discover foods tab */
+.container {
+    max-width: 1400px;   
+    margin: 10px auto;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    flex: 2;  
+    min-width: 200px;
+    height: 54px;
+    padding: 10 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size:16px;
+}
+
+.filter-box {
+    background: #f7f3e9;
+    padding: 0px;
+    display: flex;
+    gap: 20px;
+    border-radius: 10px;
+    margin-bottom: 45px;
+}
+
+.filter-box input,
+.filter-box select {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    flex: 1;
+    font-size: 15px;
+}
+
+#halalFilter {
+    width: 180px;
+}
+
+.reset-btn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #f58b00;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.reset-btn:hover {
+    opacity: 0.9;
+}
+
+/* Food list */
+.food-count {
+    font-size: 18px;
+    color: #43464b;
+}
+
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0,0,0,.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.title-row h2 {
+    margin: 0;
+    flex: 1;
+}
+
+
+.price-range {
+    display: flex;
+    white-space: nowrap;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+
+.price-symbol {
+    color: #d3d3d3;
+}
+
+
+.price-symbol.active {
+    color: #f58b00;
+}
+
+.price {
+    color: #d46b08;
+    font-weight: 600;
+}
+
+.fa-star {
+    color: #f5b301;
+}
+
+.rating {
+    color: black;
+    margin: 8px 0;
+}
+
+.halal-status {
+    color: #636363;
+    font-weight: 500;
+}
+
+.description {
+    color: #43464b;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    line-height: 1.6;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.location {
+    color: #43464b;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+.fa-location-dot {
+    color: rgb(255, 88, 88);
+}
+
+.tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 7px;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.tag.malaysian {
+    background: #fff4d6;
+    color: #d46b08;
+}
+
+.tag.chinese {
+    background: #f3e0d2;
+    color: #7a4b2a;
+}
+
+.tag.japanese {
+    background: #ffe4e6;
+    color: #be123c;
+}
+
+.tag.korean {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.tag.thai {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.tag.taiwanese {
+    background: #f3e8ff;
+    color: #6b21a8;
+}
+
+.tag.indian {
+    background: #ffedd5;
+    color: #c2410c;
+}
+
+.tag.western {
+    background: #e0e7ff;
+    color: #4338ca;
+}
+
+.tag.italian {
+    background: #fce7f3;
+    color: #be185d;
+}
+
+.tag.mexican {
+    background: #ccfbf1;
+    color: #0f766e;
+}
+
+.tag.others {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.food-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Footer */
+footer {
+    margin-top: 50px;
+    background: black;
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+
+
+/* ===============================
+   FLOATING CONTACT ADMIN BUTTON
+================================ */
+
+.contact-admin-button {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    width: 58px;
+    height: 58px;
+    border: none;
+    border-radius: 50%;
+    background: #f39c12;
+    color: #ffffff;
+    font-size: 23px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.contact-admin-button:hover {
+    background: #e67e22;
+    transform: scale(1.08);
+}
+
+.contact-admin-button::after {
+    content: "Contact Admin";
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #333333;
+    color: #ffffff;
+    padding: 9px 13px;
+    border-radius: 6px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.contact-admin-button:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* ===============================
+   CONTACT SUPPORT POPUP PANEL
+================================ */
+
+.contact-support-panel {
+    position: fixed;
+    right: 25px;
+    bottom: 95px;
+    width: 580px;
+    max-width: calc(100vw - 30px);
+    max-height: 75vh;
+    overflow-y: auto;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 14px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 999;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.support-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.support-panel-header h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #333333;
+}
+
+.support-panel-header button {
+    border: none;
+    background: transparent;
+    color: #666666;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.support-panel-header button:hover {
+    color: #e67e22;
+}
+
+.support-panel-intro {
+    color: #666666;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0 0 18px;
+}
+
+#supportRequestForm label {
+    display: block;
+    margin: 12px 0 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #333333;
+}
+
+#supportRequestForm input,
+#supportRequestForm select,
+#supportRequestForm textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 7px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+}
+
+#supportRequestForm input:focus,
+#supportRequestForm select:focus,
+#supportRequestForm textarea:focus {
+    border-color: #f39c12;
+    box-shadow: 0 0 0 2px rgba(243, 156, 18, 0.12);
+}
+
+#supportRequestForm textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.support-submit-btn {
+    width: 100%;
+    margin-top: 16px;
+    padding: 11px;
+    border: none;
+    border-radius: 7px;
+    background: #f39c12;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.support-submit-btn:hover {
+    background: #e67e22;
+}
+
+#supportFormMessage {
+    margin: 10px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* ===============================
+   MY SUPPORT REQUESTS
+================================ */
+
+.my-support-requests {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid #eee5d8;
+}
+
+.my-support-title {
+    margin: 0 0 14px;
+    color: #333333;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.my-support-card {
+    padding: 14px;
+    margin-bottom: 14px;
+    background: #ffffff;
+    border: 1px solid #eee5d8;
+    border-radius: 10px;
+}
+
+.my-support-card h4 {
+    margin: 0 0 10px;
+    color: #444444;
+    font-size: 14px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.my-support-status-row {
+    margin-bottom: 10px;
+}
+
+.my-support-status {
+    display: inline-block;
+    padding: 4px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.my-support-status.status-pending {
+    background: #fff0d6;
+    color: #a86600;
+}
+
+.my-support-status.status-in-progress {
+    background: #e6f0ff;
+    color: #245db0;
+}
+
+.my-support-status.status-resolved {
+    background: #e2f6e9;
+    color: #218348;
+}
+
+.my-support-card > p {
+    margin: 6px 0;
+    color: #666666;
+    font-size: 12px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.my-support-card .my-support-date {
+    color: #999999;
+    font-size: 11px;
+}
+
+.my-support-card > strong {
+    display: block;
+    margin-top: 12px;
+    color: #444444;
+    font-size: 12px;
+}
+
+.my-support-card .my-support-description {
+    white-space: pre-wrap;
+}
+
+.my-support-reply {
+    margin-top: 14px;
+    padding: 12px;
+    background: #fff8eb;
+    border-left: 3px solid #f39c12;
+    border-radius: 6px;
+}
+
+.my-support-reply strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #b87508;
+    font-size: 12px;
+}
+
+.my-support-reply p {
+    margin: 0;
+    color: #555555;
+    font-size: 12px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.my-support-reply .my-support-no-reply {
+    color: #999999;
+    font-style: italic;
+}
+
+
+/* Conversation history */
+.support-conversation,
+.my-support-conversation {
+    margin: 14px 0;
+    padding: 14px;
+    background: #faf8f3;
+    border: 1px solid #eee5d8;
+    border-radius: 10px;
+}
+
+.support-conversation h4,
+.my-support-conversation > strong {
+    display: block;
+    margin: 0 0 12px;
+    color: #444444;
+    font-size: 14px;
+}
+
+/* Individual message bubbles */
+.support-message,
+.my-support-message {
+    max-width: 90%;
+    margin: 10px 0;
+    padding: 10px 12px;
+    border-radius: 9px;
+    overflow-wrap: anywhere;
+}
+
+.support-message-admin {
+    margin-left: auto;
+    background: #fff0d6;
+}
+
+.my-support-message-admin {
+    margin-right: auto;
+    background: #fff0d6;
+}
+
+.support-message-user {
+    margin-right: auto;
+    background: #e6f0ff;
+}
+
+.my-support-message-user {
+    margin-left: auto;
+    background: #e6f0ff;
+}
+
+.support-message strong,
+.my-support-message strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #b87508;
+    font-size: 12px;
+}
+
+.support-message p,
+.my-support-message p {
+    margin: 0 0 6px;
+    color: #444444;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+.support-message small,
+.my-support-message small {
+    display: block;
+    color: #888888;
+    font-size: 10px;
+    text-align: right;
+}
+
+.support-conversation-empty,
+.my-support-no-reply {
+    color: #888888;
+    font-size: 12px;
+    font-style: italic;
+}
+
+/* User reply form */
+.my-support-card textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 8px;
+    border: 1px solid #dddddd;
+    border-radius: 7px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 13px;
+    resize: vertical;
+}
+
+.my-support-card .my-support-reply-btn {
+    margin-top: 8px;
+    padding: 9px 15px;
+    border: none;
+    border-radius: 7px;
+    background: #f39c12;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.my-support-card .my-support-reply-btn:hover {
+    background: #e67e22;
+}
+
+.my-support-card .my-support-reply-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.my-support-reply-feedback {
+    font-size: 12px;
+    color: #b54708;
+}
+
+.my-support-toggle-btn {
+    margin: 10px 0;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    background: #f58b00;
+    color: white;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+}
+
+.my-support-toggle-btn:hover {
+    background: #e57d00;
+}
+
+.my-support-conversation-section {
+    margin-top: 10px;
+}
+
+
+@media (max-width: 480px) {
+    .contact-support-panel {
+        right: 15px;
+        bottom: 85px;
+        width: calc(100vw - 30px);
+        max-width: none;
+    }
+}
+

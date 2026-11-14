@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="css/admin.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="admin-container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+        <h2>Hi, Admin</h2>
+
+        <!-- TOP MENU -->
+        <div class="menu-top">
+            <a href="#" onclick="showSection('overview')">
+                <i class="fa-solid fa-chart-line"></i> Overview
+            </a>
+
+            <a href="#" onclick="showSection('restaurant')">
+                <i class="fa-solid fa-store"></i> Restaurant Applications
+            </a>
+
+            <a href="#" onclick="showSection('users')">
+                <i class="fa-solid fa-users"></i> Users
+            </a>
+
+            <a href="#" onclick="showSection('restaurants')">
+                <i class="fa-solid fa-utensils"></i> Restaurants
+            </a>
+
+        </div>
+
+        <!-- BOTTOM MENU -->
+        <div class="menu-bottom">
+
+            <a href="#" onclick="showSection('support'); return false;">
+                <i class="fa-solid fa-headset"></i> Contact Support
+            </a>
+
+            <a href="index.html">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+        </div>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+        <!-- OVERVIEW -->
+        <div id="overviewSection" class="section">
+
+            <h1>Dashboard Overview</h1>
+
+            <div class="stats">
+                <div class="card"><h3>Total Users</h3><p id="totalUsers">0</p></div>
+
+                <div class="card">
+                    <h3>Total Restaurants</h3>
+                    <p id="totalApplications">0</p>
+                </div>
+
+                <div class="card yellow"><h3>Pending Restaurants</h3><p id="pendingCount">0</p></div>
+                <div class="card green"><h3>Approved Restaurants</h3><p id="approvedCount">0</p></div>
+                <div class="card red"><h3>Rejected Restaurants</h3><p id="rejectedCount">0</p></div>
+            </div>
+
+            
+            <!-- CONTACT SUPPORT STATISTICS -->
+            <h2 class="overview-subtitle">Contact Support Overview</h2>
+
+            <div class="stats support-stats">
+
+                <div class="card">
+                    <h3>Total Support Requests</h3>
+                    <p id="totalSupportRequests">0</p>
+                </div>
+
+                <div class="card yellow">
+                    <h3>Pending Requests</h3>
+                    <p id="pendingSupportRequests">0</p>
+                </div>
+
+                <div class="card blue">
+                    <h3>In Progress Requests</h3>
+                    <p id="inProgressSupportRequests">0</p>
+                </div>
+
+                <div class="card green">
+                    <h3>Resolved Requests</h3>
+                    <p id="resolvedSupportRequests">0</p>
+                </div>
+
+            </div>
+
+
+            <!-- CHART -->
+            <div class="chart-container">
+                <h2>Application Status Overview</h2>
+                <canvas id="statusChart"></canvas>
+            </div>
+
+            
+            <!-- CONTACT SUPPORT STATUS CHART -->
+            <div class="chart-container support-chart-container">
+                <h2>Contact Support Status Overview</h2>
+                <canvas id="supportStatusChart"></canvas>
+            </div>
+
+        </div>
+
+        <!-- RESTAURANT APPLICATIONS -->
+        <div id="restaurantSection" class="section" style="display:none;">
+
+            <h2>Restaurant Application</h2>
+
+            <!-- SEARCH & FILTER -->
+            <div class="restaurant-filter">
+
+            <div class="date-range">
+                <span>Application Date:</span>
+
+                <input
+                    type="date"
+                    id="restaurantFromDateFilter"
+                >
+
+                <span>to</span>
+
+                <input
+                    type="date"
+                    id="restaurantToDateFilter"
+                >
+            </div>
+
+            <input
+                type="text"
+                id="restaurantSearch"
+                placeholder="Search restaurant, email, branch, address or SSM Number"
+            >
+
+            <select id="restaurantStatusFilter">
+                <option value="">All Status</option>
+                <option value="pending">Pending</option>
+                <option value="approved">Approved</option>
+                <option value="rejected">Rejected</option>
+            </select>
+
+            <button id="clearRestaurantFilter" class="btn clear">
+                Clear
+            </button>
+
+        </div>
+
+            <!-- TOTAL COUNT -->
+            <div id="restaurantApplicationCount" class="table-count">
+                Total 0 applications found
+            </div>
+
+            
+            <div class="table">
+
+                <!-- HEADER -->
+                <div class="table-row header">
+                    <div>Application Date</div>
+                    <div>Email</div>
+                    <div>Restaurant</div>
+                    <div>Branch</div>
+                    <div>Address</div>
+                    <div>SSM Number</div>
+                    <div>Status</div>
+                    <div>Action</div>
+                </div>
+
+                <!-- DYNAMIC DATA -->
+                <div id="restaurantTableBody"></div>
+
+            </div>
+
+        </div>
+
+        <!-- USERS -->
+        <div id="userSection" class="section" style="display:none;">
+            <h2>Users</h2>
+
+                <!-- SEARCH & FILTER -->
+                <div class="user-filter">
+
+                    <!-- Registered Date -->
+                    <div class="single-date-filter">
+                        <span>Registered Date:</span>
+
+                        <input
+                            type="date"
+                            id="userDateFilter"
+                        >
+                    </div>
+
+                    <!-- Search -->
+                    <input
+                        type="text"
+                        id="userSearch"
+                        placeholder="Search username or email"
+                    >
+
+                    <!-- Clear -->
+                    <button id="clearUserFilter" class="btn user-clear">
+                        Clear
+                    </button>
+
+                </div>
+
+                <!-- TOTAL COUNT -->
+                <div id="userCount" class="table-count">
+                    Total 0 users found
+                </div>
+
+            <div class="table">
+                <div class="table-row-user header">
+                    <div>Registered Date</div>
+                    <div>Username</div>
+                    <div>Email</div>
+                    <div>Action</div>
+                </div>
+
+                <div id="userTableBody"></div>
+            </div>
+        </div>
+
+        <!-- RESTAURANTS -->
+        <div id="restaurantsSection" class="section" style="display:none;">
+
+            <h2>Restaurants List</h2>
+
+            <!-- SEARCH & FILTER -->
+            <div class="approved-restaurant-filter">
+
+            <!-- Registered Date -->
+            <div class="single-date-filter">
+                <span>Application Date:</span>
+
+                <input
+                    type="date"
+                    id="applicationDateFilter"
+                >
+            </div>
+
+            <!-- Approved Date -->
+            <div class="single-date-filter">
+                <span>Approved Date:</span>
+
+                <input
+                    type="date"
+                    id="approvedDateFilter"
+                >
+            </div>
+
+            <!-- Search -->
+            <input
+                type="text"
+                id="approvedRestaurantSearch"
+                placeholder="Search restaurant, branch, address or SSM Number"
+            >
+
+            <!-- Clear -->
+            <button id="clearApprovedRestaurantFilter" class="btn approved-clear">
+                Clear
+            </button>
+
+        </div>
+
+
+            <!-- TOTAL COUNT -->
+            <div id="approvedRestaurantCount" class="table-count">
+                Total 0 approved restaurants found
+            </div>
+            
+
+            <div class="table">
+
+                <div class="table-row-approvedRestaurant header">
+                    <div>Application Date</div>
+                    <div>Approved Date</div>
+                    <div>Email</div>
+                    <div>Restaurant ID</div>
+                    <div>Restaurant</div>
+                    <div>Branch</div>
+                    <div>Address</div>
+                    <div>SSM Number</div>
+                    <div>Action</div>
+                </div>
+
+                <div id="approvedRestaurantTableBody"></div>
+
+            </div>
+
+        </div>
+
+        
+        <!-- CONTACT SUPPORT -->
+        <div id="supportSection" class="section" style="display:none;">
+
+            <h2>Contact Support</h2>
+
+            <!-- SEARCH & FILTER -->
+            <div class="support-filter">
+
+                <input
+                    type="text"
+                    id="supportSearch"
+                    placeholder="Search user/restaurant, subject or message"
+                >
+
+                <select id="supportCategoryFilter">
+                    <option value="">All Categories</option>
+                    <!-- Category options will be added based on your existing categories -->
+                </select>
+
+                <select id="supportStatusFilter">
+                    <option value="">All Statuses</option>
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Resolved">Resolved</option>
+                </select>
+
+                <div class="single-date-filter">
+                    <span>Submitted Date:</span>
+                    <input type="date" id="supportDateFilter">
+                </div>
+
+                <button type="button" id="clearSupportFilter" class="btn clear">
+                    Clear
+                </button>
+
+            </div>
+
+            <!-- TOTAL COUNT -->
+            <div id="supportRequestCount" class="table-count">
+                Total 0 support requests found
+            </div>
+
+            <!-- SUPPORT REQUESTS -->
+            <div id="supportRequestsContainer">
+                <p>Loading support requests...</p>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<!-- Reject Modal -->
+<div id="rejectModal" class="modal">
+
+    <div class="modal-content">
+
+        <h3>Reject Restaurant</h3>
+
+        <p>Please select a reason:</p>
+
+        <label>
+            <input type="radio" name="rejectReason" value="Invalid SSM">
+            Invalid SSM
+        </label>
+
+        <label>
+            <input type="radio" name="rejectReason" value="Incomplete Information">
+            Incomplete Information
+        </label>
+
+        <label>
+            <input type="radio" name="rejectReason" value="Restaurant Already Exists">
+            Restaurant Already Exists
+        </label>
+
+        <label>
+            <input type="radio" name="rejectReason" value="Others">
+            Others
+        </label>
+
+        <textarea
+            id="otherReason"
+            placeholder="Enter reason..."
+            style="display:none;"></textarea>
+
+        <div class="modal-buttons">
+            <button class="btn reject" onclick="confirmReject()">
+                Confirm Reject
+            </button>
+
+            <button class="btn" onclick="closeRejectModal()">
+                Cancel
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/admin.js"></script>
+
+</body>
+</html>

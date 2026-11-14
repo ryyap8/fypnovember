@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Email Verified - FoodRoutes</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/email-verified.css">
+</head>
+
+<body>
+
+    <div class="verification-container">
+
+        <!-- Logo -->
+        <div class="logo">
+            FoodRoutes
+        </div>
+
+        <!-- Success Icon -->
+        <div class="check-circle">
+            ✓
+        </div>
+
+        <!-- Title -->
+        <h1>
+            Email Verified!
+        </h1>
+
+        <!-- Message -->
+        <p class="message">
+            Your email address has been successfully verified.
+            Your FoodRoutes account is now ready to use.
+        </p>
+
+        <!-- Countdown -->
+        <div class="countdown">
+            Redirecting to login in
+            <span id="countdown">5</span>
+            seconds...
+        </div>
+
+        <!-- Login Button -->
+        <a href="/login.html" class="login-button">
+            Go to Login
+        </a>
+
+        <!-- Bottom Text -->
+        <div class="small-text">
+            Thank you for joining FoodRoutes.
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        let seconds = 5;
+
+        const countdown = document.getElementById("countdown");
+
+        const timer = setInterval(() => {
+            seconds--;
+
+            countdown.textContent = seconds;
+
+            if (seconds <= 0) {
+                clearInterval(timer);
+                window.location.href = "/login.html";
+            }
+        }, 1000);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,502 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Nunito Sans',sans-serif;
+}
+
+.section {
+    max-width: 1400px;   
+    margin: 20px auto;
+    padding: 20px 40px;
+}
+
+.header {
+    text-align: left;
+    padding-top: 10px;
+    padding-left: 42px;
+    margin-bottom: -10px;
+}
+
+.header h1 {
+    text-align: left;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.header p {
+    margin-top: 0px;
+    color: #666;
+    text-align: left;
+    line-height: 1.6;
+    font-size: 18px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 0px;
+}
+
+/* Cards */
+.card {
+    background: white;
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.card-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-size: 38px;
+}
+
+.route-user-icon {
+    background: #e8f0ff;
+    color: #2b6fff;
+}
+
+.ai-icon {
+    background: #fff3e6;
+    color: #ff8a00;
+}
+
+.card h2 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.card p {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* List */
+ul {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+ul li {
+    margin: 10px 0;
+    color: #444;
+    font-size: 16px;
+}
+
+ul li i {
+    color: green;
+    margin-right: 8px;
+}
+
+.btn {
+    display: block;
+    margin: 0 auto;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.btn-blue {
+    background: #2b6fff;
+    color: white;
+}
+
+.btn-orange {
+    background: #ff8a00;
+    color: white;
+}
+
+/* =========================================
+   SAVED ROUTES
+========================================= */
+
+.saved {
+    margin-top: -20px;
+}
+
+.saved-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.saved-header h2 {
+    margin: 0;
+}
+
+.saved-header span {
+    color: #999;
+    font-size: 15px;
+}
+
+
+/* Saved Routes Container */
+
+.saved-routes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+
+/* Empty State */
+
+.empty-box {
+    background: white;
+    padding: 45px 30px;
+    border-radius: 12px;
+    text-align: center;
+    color: #888;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.empty-box i {
+    display: block;
+    font-size: 35px;
+    color: #f58b00;
+    margin-bottom: 12px;
+}
+
+.empty-box p {
+    margin: 0;
+    font-size: 16px;
+}
+
+
+/* =========================================
+   SAVED ROUTE CARD
+========================================= */
+
+.saved-route-card {
+    background: white;
+    border-radius: 12px;
+    padding: 28px 32px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.saved-route-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+
+/* Route Header */
+
+.route-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #f1eee7;
+}
+
+.route-card-header h3 {
+    margin: 0 0 8px;
+    font-size: 21px;
+    color: #333;
+}
+
+.route-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    color: #777;
+    font-size: 14px;
+}
+
+.route-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.route-meta i {
+    color: #f58b00;
+}
+
+
+/* Route Type */
+
+.route-type {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* User Planned */
+.route-type.user-planned {
+    background: #e8f1ff;
+    color: #4a7dcc;
+}
+
+/* System Generated */
+.route-type.system-generated {
+    background: #fff0dc;
+    color: #f58b00;
+}
+
+
+/* =========================================
+   MEALS
+========================================= */
+
+.saved-meals {
+    display: grid;
+    grid-template-columns:
+        repeat(3, 1fr);
+    gap: 14px;
+    margin: 20px 0;
+}
+
+.saved-meal {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #faf8f2;
+    border-radius: 10px;
+    padding: 15px;
+    min-width: 0;
+}
+
+.meal-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 10px;
+    background: #fff0dc;
+    color: #f58b00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.meal-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex: 1;
+}
+
+.meal-type {
+    font-size: 12px;
+    color: #f58b00;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.meal-info strong {
+    font-size: 14px;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.meal-info small {
+    color: #888;
+    font-size: 12px;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.saved-food-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 3px 0 5px;
+}
+
+.saved-food-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.saved-food-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #484239;
+}
+
+.saved-food-name small {
+    margin-left: 5px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #91897d;
+}
+
+.saved-food-price {
+    font-size: 14px;
+    font-weight: 700;
+    color: #f58b00;
+    white-space: nowrap;
+}
+
+.meal-price {
+    color: #333;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   ROUTE SUMMARY
+========================================= */
+#routeCount{
+    font-size: 18px;
+}
+
+.route-summary {
+    display: grid;
+    grid-template-columns:
+        repeat(3, 1fr);
+    gap: 15px;
+    background: #f7f3e9;
+    border-radius: 10px;
+    padding: 17px 20px;
+}
+
+.route-summary > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.route-summary span {
+    color: #888;
+    font-size: 15px;
+}
+
+.route-summary strong {
+    color: #333;
+    font-size: 16px;
+}
+
+.within-budget {
+    color: #4f9d69 !important;
+}
+
+.over-budget {
+    color: #d9534f !important;
+}
+
+
+/* =========================================
+   ROUTE ACTIONS
+========================================= */
+
+.route-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.edit-route-btn {
+    background: transparent;
+    border: none;
+    color: #430fff;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.edit-route-btn:hover {
+    background: #c2dbff;
+}
+
+.edit-route-btn i {
+    margin-right: 5px;
+}
+
+.delete-route-btn {
+    background: transparent;
+    border: none;
+    color: #bc2e2e;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.delete-route-btn:hover {
+    background: #fff1ef;
+    color: #d9534f;
+}
+
+.delete-route-btn i {
+    margin-right: 5px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .saved-meals {
+        grid-template-columns: 1fr;
+    }
+
+    .route-summary {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .saved-route-card {
+        padding: 20px;
+    }
+
+    .route-card-header {
+        flex-direction: column;
+    }
+
+    .route-type {
+        align-self: flex-start;
+    }
+
+    .route-meta {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+}

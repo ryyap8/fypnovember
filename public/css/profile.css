@@ -1,0 +1,261 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.profile-container {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.profile-box {
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    width: 900px;
+    min-height: 450px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-header h1 {
+    font-size: 35px;
+    margin: 0;
+}
+
+.edit-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    background: #ff7b00;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.edit-btn:hover {
+    background: #e66e00;
+}
+
+.profile-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;   
+    justify-content: flex-start; 
+    padding-left: 20px; 
+}
+
+.top-profile {
+    display: flex;
+    align-items: flex-start;   
+    gap: 35px;             
+    margin-bottom: 10px;
+}
+
+/* =========================
+   PROFILE AVATAR
+========================= */
+
+.avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: #f4eedf;
+
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+.profile-user-icon {
+    font-size: 45px;
+    color: #f58b00;
+}
+
+#profileImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: none;
+}
+
+/* Camera button */
+.upload-avatar {
+    display: none;
+
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+    background: #f58b00;
+    color: white;
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    border: 3px solid white;
+
+    font-size: 14px;
+}
+
+.upload-avatar:hover {
+    background: #ff7a00;
+}
+
+.name-box {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.big-username {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.big-email {
+    margin: 5px 0 0;
+    font-size: 18px;
+    color: #464646;
+}
+
+/* Profile info */
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.top-profile + .info-item {
+    margin-top: 15px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
+.info-item strong {
+    font-size: 20px;
+    color: #000000;
+    margin-bottom: 5px;
+}
+
+.info-item span {
+    font-size: 18px;
+    color: #464646;
+}
+
+/* Edit input */
+.edit-input {
+    width: 200%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    outline: none;
+    margin-top: 5px;
+}
+
+.edit-input:focus {
+    border-color: #ff7a00;
+    box-shadow: 0 0 5px rgba(255, 122, 0, 0.3);
+}
+
+.edit-textarea {
+    width: 300%;
+    min-height: 100px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    outline: none;
+    resize: vertical;
+    margin-top: 5px;
+}
+
+.edit-textarea:focus {
+    border-color: #ff7a00;
+    box-shadow: 0 0 5px rgba(255, 122, 0, 0.3);
+}
+
+/* =========================
+   PROFILE STATISTICS
+========================= */
+
+.profile-stats {
+    display: flex;
+    width: 100%;
+    max-width: 770px;
+    margin-top: 10px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.stat-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-item i {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+/* Favourites */
+.stat-item:nth-child(1) i {
+    color: #e74c3c;
+}
+
+/* Routes */
+.stat-item:nth-child(2) i {
+    color: #f58b00;
+}
+
+/* Reviews */
+.stat-item:nth-child(3) i {
+    color: #f1c40f;
+}
+
+.stat-number {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+}
+
+.stat-label {
+    font-size: 16px;
+    color: #464646;
+    margin-top: 2px;
+}

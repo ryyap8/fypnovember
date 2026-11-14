@@ -1,0 +1,777 @@
+/* =========================================
+   ROUTE PLANNER
+========================================= */
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Nunito Sans',sans-serif;
+}
+
+.section {
+    max-width: 1400px;   
+    margin: 20px auto;
+    padding: 20px 40px;
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.planner-header {
+    width: 90%;
+    max-width: 1300px;
+    margin: 45px auto 25px;
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.header-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff4df;
+    color: #f58b00;
+
+    border-radius: 16px;
+
+    font-size: 27px;
+}
+
+.planner-header h1 {
+    margin: 0 0 5px;
+
+    font-size: 32px;
+    font-weight: 800;
+
+    color: #3d382f;
+}
+
+.planner-header p {
+    margin: 0;
+
+    font-size: 17px;
+    color: #827a6d;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.planner-container {
+    width: 90%;
+    max-width: 1300px;
+
+    margin: 0 auto 60px;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.planner-card {
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 28px 30px;
+
+    margin-bottom: 24px;
+
+    box-shadow: 0 5px 20px rgba(80, 65, 40, 0.07);
+}
+
+
+/* =========================================
+   SECTION TITLE
+========================================= */
+
+.section-title {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 25px;
+}
+
+.section-icon {
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff4df;
+    color: #f58b00;
+
+    border-radius: 12px;
+
+    font-size: 20px;
+}
+
+.section-title h2 {
+    margin: 0 0 3px;
+
+    font-size: 22px;
+    font-weight: 800;
+
+    color: #3d382f;
+}
+
+.section-title p {
+    margin: 0;
+
+    font-size: 15px;
+    color: #918879;
+}
+
+
+/* =========================================
+   FORM GRID
+========================================= */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 22px 25px;
+}
+
+
+/* =========================================
+   FORM GROUP
+========================================= */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 16px;
+    font-weight: 700;
+
+    color: #4c463d;
+}
+
+.form-group label i {
+    color: #f58b00;
+    margin-right: 4px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+
+    height: 45px;
+
+    padding: 0 14px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: #f8f5ef;
+
+    color: #484239;
+
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 16px;
+
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    background: #fff8ed;
+
+    box-shadow: 0 0 0 2px rgba(245, 139, 0, 0.18);
+}
+
+.form-group select:disabled {
+    color: #aaa398;
+    cursor: not-allowed;
+}
+
+
+/* =========================================
+   BUDGET SLIDER
+========================================= */
+
+.budget-label-row {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+.budget-label-row span {
+    font-size: 16px;
+    font-weight: 800;
+
+    color: #f58b00;
+}
+
+#budget {
+    width: 100%;
+    height: 7px;
+
+    margin-top: 8px;
+
+    accent-color: #f58b00;
+
+    cursor: pointer;
+}
+
+.budget-range {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 2px;
+
+    font-size: 14px;
+    color: #a29a8e;
+}
+
+
+/* =========================================
+   MEAL CARD
+========================================= */
+
+.meal-card {
+    background: #fcfaf6;
+
+    border-radius: 17px;
+
+    padding: 22px;
+
+    margin-bottom: 18px;
+}
+
+.meal-card:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================
+   MEAL HEADER
+========================================= */
+
+.meal-header {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 20px;
+}
+
+.meal-icon {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #fff0d8;
+    color: #f58b00;
+
+    font-size: 21px;
+}
+
+.meal-header h3 {
+    margin: 0 0 2px;
+
+    font-size: 19px;
+    font-weight: 800;
+
+    color: #403a31;
+}
+
+.meal-header span {
+    font-size: 14px;
+    color: #968d7f;
+}
+
+
+/* =========================================
+   MEAL FORM
+========================================= */
+
+.meal-form {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+
+/* =========================================
+   FOOD PRICE
+========================================= */
+
+.food-price {
+    margin-top: 18px;
+
+    padding-top: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-top: 1px solid #eee8dc;
+}
+
+.food-price span {
+    font-size: 15px;
+    color: #91897d;
+}
+
+.food-price span i {
+    color: #f58b00;
+    margin-right: 5px;
+}
+
+.food-price strong {
+    font-size: 18px;
+
+    color: #f58b00;
+}
+
+
+/* =========================================
+   SUMMARY
+========================================= */
+
+.summary-card {
+    background: #fff;
+}
+
+.summary-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.summary-item {
+    background: #faf7f1;
+
+    border-radius: 14px;
+
+    padding: 18px;
+
+    text-align: center;
+}
+
+.summary-item span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 15px;
+    color: #8e867a;
+}
+
+.summary-item strong {
+    font-size: 22px;
+    font-weight: 800;
+
+    color: #443e35;
+}
+
+#totalCost {
+    color: #f58b00;
+}
+
+
+/* =========================================
+   BUDGET STATUS
+========================================= */
+
+.budget-status {
+    margin-top: 18px;
+
+    padding: 13px 16px;
+
+    border-radius: 11px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.budget-status.within {
+    background: #eef8ee;
+    color: #4c8a51;
+}
+
+.budget-status.over {
+    background: #fff0ed;
+    color: #d45d49;
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.planner-actions {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 5px;
+}
+
+.back-btn,
+.save-route-btn {
+    height: 46px;
+
+    padding: 0 22px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    font-family: 'Nunito Sans', sans-serif;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.back-btn {
+    background: #eee9df;
+    color: #625b50;
+}
+
+.back-btn:hover {
+    background: #e4ded2;
+}
+
+.save-route-btn {
+    background: #f58b00;
+    color: white;
+
+    box-shadow: 0 5px 12px rgba(245, 139, 0, 0.18);
+}
+
+.save-route-btn:hover {
+    background: #e87e00;
+
+    transform: translateY(-1px);
+}
+
+.back-btn i,
+.save-route-btn i {
+    margin-right: 6px;
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.planner-message {
+    display: none;
+
+    margin-top: 18px;
+
+    padding: 13px 16px;
+
+    border-radius: 11px;
+
+    text-align: center;
+
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.planner-message.success {
+    display: block;
+
+    background: #eef8ee;
+    color: #4c8a51;
+}
+
+.planner-message.error {
+    display: block;
+
+    background: #fff0ed;
+    color: #d45d49;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    text-align: center;
+
+    padding: 25px 20px 35px;
+
+    font-size: 15px;
+
+    color: #968d80;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 750px) {
+
+    .planner-header {
+        width: 92%;
+
+        align-items: flex-start;
+    }
+
+    .planner-header h1 {
+        font-size: 27px;
+    }
+
+    .planner-header p {
+        font-size: 15px;
+    }
+
+    .planner-container {
+        width: 92%;
+    }
+
+    .planner-card {
+        padding: 22px 20px;
+    }
+
+    .form-grid,
+    .meal-form {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .planner-actions {
+        gap: 12px;
+    }
+
+    .back-btn,
+    .save-route-btn {
+        flex: 1;
+    }
+}
+
+
+/* =========================================
+   MULTIPLE FOOD SELECTION
+========================================= */
+
+.food-selection {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    max-height: 250px;
+
+    overflow-y: auto;
+
+    padding: 2px;
+}
+
+.food-placeholder {
+    padding: 14px;
+
+    background: #f8f5ef;
+
+    border-radius: 11px;
+
+    color: #aaa398;
+
+    font-size: 15px;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   FOOD ITEM
+========================================= */
+
+.food-item {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 12px 14px;
+
+    background: #f8f5ef;
+
+    border-radius: 11px;
+
+    transition: 0.2s ease;
+}
+
+.food-item:hover {
+    background: #fff8ed;
+}
+
+
+/* =========================================
+   FOOD INFORMATION
+========================================= */
+
+.food-info {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.food-name {
+    font-size: 15px;
+    font-weight: 700;
+
+    color: #484239;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.food-item-price {
+    font-size: 14px;
+
+    color: #91897d;
+}
+
+
+/* =========================================
+   QUANTITY CONTROL
+========================================= */
+
+.quantity-control {
+    display: flex;
+
+    align-items: center;
+
+    flex-shrink: 0;
+
+    background: white;
+
+    border-radius: 9px;
+
+    overflow: hidden;
+
+    box-shadow: 0 1px 4px rgba(80, 65, 40, 0.08);
+}
+
+.quantity-btn {
+    width: 32px;
+    height: 32px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #f58b00;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.quantity-btn:hover {
+    background: #fff0d8;
+}
+
+.quantity-value {
+    width: 32px;
+
+    text-align: center;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    color: #4c463d;
+}
+
+
+/* =========================================
+   SELECTED FOOD TOTAL
+========================================= */
+
+.food-price {
+    margin-top: 18px;
+
+    padding-top: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-top: 1px solid #eee8dc;
+}
+
+.food-price span {
+    font-size: 15px;
+    color: #91897d;
+}
+
+.food-price span i {
+    color: #f58b00;
+    margin-right: 5px;
+}
+
+.food-price strong {
+    font-size: 18px;
+
+    color: #f58b00;
+}

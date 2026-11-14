@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create My Food Route</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/routes-planner.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION BAR
+    ========================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <i class="fa-solid fa-utensils"></i>
+            FoodRoutes
+        </div>
+
+        <div class="nav-center" id="navCenter"></div>
+
+        <div class="nav-right" id="navRight"></div>
+
+    </nav>
+
+
+    <!-- =========================
+         PAGE HEADER
+    ========================== -->
+
+    <section class="planner-header">
+
+        <div class="header-icon">
+            <i class="fa-solid fa-route"></i>
+        </div>
+
+        <div>
+            <h1>Create My Food Route</h1>
+
+            <p>
+                Plan your meals by choosing your preferred restaurants
+                and foods for the day.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MAIN PLANNER
+    ========================== -->
+
+    <main class="planner-container">
+
+        <!-- =========================
+             BASIC INFORMATION
+        ========================== -->
+
+        <section class="planner-card">
+
+            <div class="section-title">
+
+                <div class="section-icon">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                </div>
+
+                <div>
+                    <h2>Route Information</h2>
+                    <p>Set the basic details for your food route.</p>
+                </div>
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <!-- Route Name -->
+
+                <div class="form-group">
+
+                    <label for="routeName">
+                        Route Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="routeName"
+                        placeholder="e.g. JB Food Day"
+                    >
+
+                </div>
+
+
+                <!-- Date -->
+
+                <div class="form-group">
+
+                    <label for="routeDate">
+                        Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="routeDate"
+                    >
+
+                </div>
+
+
+                <!-- Location -->
+
+                <div class="form-group">
+
+                    <label for="location">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Location
+
+                    </label>
+
+                    <select id="location">
+
+                        <option value="">
+                            Select location
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Budget -->
+
+                <div class="form-group budget-group">
+
+                    <div class="budget-label-row">
+
+                        <label for="budget">
+                            Daily Budget
+                        </label>
+
+                        <span id="budgetValue">
+                            RM50
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="budget"
+                        min="10"
+                        max="200"
+                        step="5"
+                        value="50"
+                    >
+
+                    <div class="budget-range">
+
+                        <span>RM10</span>
+                        <span>RM200</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MEAL SELECTION
+        ========================== -->
+
+        <section class="planner-card">
+
+            <div class="section-title">
+
+                <div class="section-icon">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+
+                <div>
+                    <h2>Choose Your Meals</h2>
+                    <p>
+                        Select a restaurant and food for each meal.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 BREAKFAST
+            ========================== -->
+
+            <div class="meal-card" data-meal="Breakfast">
+
+                <div class="meal-header">
+
+                    <div class="meal-icon">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+
+                    <div>
+                        <h3>Breakfast</h3>
+                        <span>Morning meal</span>
+                    </div>
+
+                </div>
+
+
+                <div class="meal-form">
+
+                    <div class="form-group">
+
+                        <label for="breakfastRestaurant">
+                            Restaurant
+                        </label>
+
+                        <select
+                            id="breakfastRestaurant"
+                            class="restaurant-select"
+                            data-meal="Breakfast"
+                            disabled
+                        >
+
+                            <option value="">
+                                Select restaurant
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="breakfastFood">
+                            Food
+                        </label>
+
+                        <div
+                            id="breakfastFood"
+                            class="food-selection"
+                            data-meal="Breakfast"
+                        >
+                            <div class="food-placeholder">
+                                Select a restaurant first
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="food-price">
+
+                    <span>
+                        <i class="fa-solid fa-tag"></i>
+                        Selected Food Price
+                    </span>
+
+                    <strong id="breakfastPrice">
+                        RM0.00
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 LUNCH
+            ========================== -->
+
+            <div class="meal-card" data-meal="Lunch">
+
+                <div class="meal-header">
+
+                    <div class="meal-icon">
+                        <i class="fa-solid fa-bowl-food"></i>
+                    </div>
+
+                    <div>
+                        <h3>Lunch</h3>
+                        <span>Afternoon meal</span>
+                    </div>
+
+                </div>
+
+
+                <div class="meal-form">
+
+                    <div class="form-group">
+
+                        <label for="lunchRestaurant">
+                            Restaurant
+                        </label>
+
+                        <select
+                            id="lunchRestaurant"
+                            class="restaurant-select"
+                            data-meal="Lunch"
+                            disabled
+                        >
+
+                            <option value="">
+                                Select restaurant
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="lunchFood">
+                            Food
+                        </label>
+
+                        <div
+                            id="lunchFood"
+                            class="food-selection"
+                            data-meal="Lunch"
+                        >
+                            <div class="food-placeholder">
+                                Select a restaurant first
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="food-price">
+
+                    <span>
+                        <i class="fa-solid fa-tag"></i>
+                        Selected Food Price
+                    </span>
+
+                    <strong id="lunchPrice">
+                        RM0.00
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 DINNER
+            ========================== -->
+
+            <div class="meal-card" data-meal="Dinner">
+
+                <div class="meal-header">
+
+                    <div class="meal-icon">
+                        <i class="fa-solid fa-moon"></i>
+                    </div>
+
+                    <div>
+                        <h3>Dinner</h3>
+                        <span>Evening meal</span>
+                    </div>
+
+                </div>
+
+
+                <div class="meal-form">
+
+                    <div class="form-group">
+
+                        <label for="dinnerRestaurant">
+                            Restaurant
+                        </label>
+
+                        <select
+                            id="dinnerRestaurant"
+                            class="restaurant-select"
+                            data-meal="Dinner"
+                            disabled
+                        >
+
+                            <option value="">
+                                Select restaurant
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="dinnerFood">
+                            Food
+                        </label>
+
+                        <div
+                            id="dinnerFood"
+                            class="food-selection"
+                            data-meal="Dinner"
+                        >
+                            <div class="food-placeholder">
+                                Select a restaurant first
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="food-price">
+
+                    <span>
+                        <i class="fa-solid fa-tag"></i>
+                        Selected Food Price
+                    </span>
+
+                    <strong id="dinnerPrice">
+                        RM0.00
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ROUTE SUMMARY
+        ========================== -->
+
+        <section class="planner-card summary-card">
+
+            <div class="section-title">
+
+                <div class="section-icon">
+                    <i class="fa-solid fa-calculator"></i>
+                </div>
+
+                <div>
+                    <h2>Route Summary</h2>
+                    <p>Check your estimated food spending.</p>
+                </div>
+
+            </div>
+
+
+            <div class="summary-grid">
+
+                <div class="summary-item">
+
+                    <span>
+                        Daily Budget
+                    </span>
+
+                    <strong id="summaryBudget">
+                        RM50.00
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                    <span>
+                        Total Food Cost
+                    </span>
+
+                    <strong id="totalCost">
+                        RM0.00
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                    <span>
+                        Remaining Budget
+                    </span>
+
+                    <strong id="remainingBudget">
+                        RM50.00
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="budgetStatus"
+                class="budget-status within"
+            >
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                Within Budget
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ACTION BUTTONS
+        ========================== -->
+
+        <div class="planner-actions">
+
+            <button
+                type="button"
+                class="back-btn"
+                id="backBtn"
+            >
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back
+
+            </button>
+
+
+            <button
+                type="button"
+                class="save-route-btn"
+                id="saveRouteBtn"
+            >
+
+                <i class="fa-solid fa-floppy-disk"></i>
+
+                Save Route
+
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             MESSAGE
+        ========================== -->
+
+        <div
+            id="plannerMessage"
+            class="planner-message"
+        ></div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+        © 2026 FoodRoutes. Discover, Plan, Enjoy.
+    </footer>
+
+
+    <script src="/js/navbar.js"></script>
+    <script src="/js/routes-planner.js"></script>
+
+</body>
+
+</html>

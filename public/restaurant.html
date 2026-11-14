@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Restaurant Dashboard</title>
+
+<link rel="stylesheet" href="css/restaurant.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="restaurant-container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+        <h2 id="restaurantGreeting">Hi</h2>
+
+        <div class="menu-top">
+            <a href="#" onclick="showSection('overview'); return false;">
+                <i class="fa-solid fa-chart-line"></i> Overview
+            </a>
+
+            <a href="#" onclick="showSection('menu'); return false;">
+                <i class="fa-solid fa-utensils"></i> Menu
+            </a>
+
+            <a href="#" onclick="showSection('reviews'); return false;">
+                <i class="fa-solid fa-star"></i> Reviews
+            </a>
+
+            <a href="#" onclick="showSection('announcements'); return false;">
+                <i class="fa-solid fa-bullhorn"></i> Announcements
+            </a>
+        </div>
+
+        <div class="menu-bottom">
+            <a href="#" onclick="showSection('profile'); return false;">
+                <i class="fa-solid fa-user"></i> Profile
+            </a>
+
+            <a href="#" onclick="openNotifications(); return false;">
+                <i class="fa-solid fa-bell"></i> 
+                Notifications
+                <span id="notificationBadge" class="notification-badge">
+                    0
+                </span>
+            </a>
+
+            <a href="#" onclick="showSection('support'); return false;">
+                <i class="fa-solid fa-headset"></i> Contact Admin
+            </a>
+
+            <a href="index.html">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+        </div>
+
+    </div>
+
+    <!-- MAIN -->
+    <div class="main-content">
+
+        <!-- OVERVIEW -->
+        <div id="overviewSection" class="section">
+
+        <h1>Restaurant Dashboard</h1>
+
+        <div class="stats">
+
+            <div class="card">
+                <h3>Total Foods</h3>
+                <p id="totalFoods">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Average Rating</h3>
+                <p id="averageRating">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Reviews</h3>
+                <p id="totalReviews">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Favourites</h3>
+                <p id="totalFavourites">0</p>
+            </div>
+
+        </div>
+
+        <div class="chart-grid">
+
+            <!-- Review Ratings -->
+            <div class="chart-container">
+
+                <h2>Review Ratings</h2>
+
+                <canvas id="reviewChart"></canvas>
+
+            </div>
+
+
+            <!-- Review Trends -->
+            <div class="chart-container">
+
+                <div class="review-chart-header">
+
+                    <h2>Review Trends</h2>
+
+                    <div class="review-period-tabs">
+
+                        <button
+                            class="review-tab"
+                            onclick="changeReviewPeriod('today')">
+                            Today
+                        </button>
+
+                        <button
+                            class="review-tab"
+                            onclick="changeReviewPeriod('week')">
+                            This Week
+                        </button>
+
+                        <button
+                            class="review-tab active"
+                            onclick="changeReviewPeriod('month')">
+                            This Month
+                        </button>
+
+                        <button
+                            class="review-tab"
+                            onclick="changeReviewPeriod('all')">
+                            All Time
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="analytics-chart-container">
+
+                    <canvas id="analyticsChart"></canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+        <!-- MENU -->
+        <div id="menuSection" class="section" style="display:none;">
+
+            <h2>Menu Management</h2>
+
+                <div class="food-filter">
+
+                <input 
+                    type="text"
+                    id="foodSearch"
+                    placeholder="Search food name, description, cultural info..."
+                >
+
+                <select id="priceFilter">
+                    <option value="">Sort Price</option>
+                    <option value="low-high">Price: Low to High</option>
+                    <option value="high-low">Price: High to Low</option>
+                </select>
+
+                <select id="categoryFilter">
+                    <option value="">All Category</option>
+                </select>
+
+                <select id="mealTypeFilter">
+                    <option value="">All Meal Type</option>
+                </select>
+
+                <button 
+                    class="btn food-clear" 
+                    onclick="clearFoodFilter()">
+                    Clear
+                </button>
+
+            </div>
+
+            <button class="add-btn" onclick="openFoodModal()">+ Add Food</button>
+
+            <div id="foodResultCount" class="result-count">
+                Showing 0 results
+            </div>
+
+            <div class="table">
+
+                <div class="table-row header">
+                    <div>Image</div>
+                    <div>Name</div>
+                    <div>Price</div>
+                    <div>Category</div>
+                    <div>Meal Type</div>
+                    <div>Description</div>
+                    <div>Cultural Info</div>
+                    <div>Action</div>
+                </div>
+
+                <div id="foodTableBody"></div>
+
+            </div>
+
+        </div>
+
+        <!-- REVIEWS -->
+        <div id="reviewsSection" class="section" style="display: none;">
+
+            <h2>Customer Reviews</h2>
+
+            <!-- REVIEW FILTER -->
+            <div class="review-filter">
+
+                <input
+                    type="text"
+                    id="reviewSearch"
+                    placeholder="Search username or comment..."
+                >
+
+                <select id="ratingFilter">
+                    <option value="">All Ratings</option>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+
+                <span class="date-label">Date Posted:</span>
+
+                <input
+                    type="date"
+                    id="reviewDateFrom"
+                    title="From Date"
+                >
+
+                <span class="date-to">to</span>
+
+                <input
+                    type="date"
+                    id="reviewDateTo"
+                    title="To Date"
+                >
+
+                <button
+                    class="btn review-clear"
+                    onclick="clearReviewFilter()"
+                >
+                    Clear
+                </button>
+
+            </div>
+
+            <div id="reviewResultCount" class="result-count">
+                Showing 0 results
+            </div>
+
+            <div id="reviewList">
+                <!-- Reviews will be loaded here -->
+            </div>
+
+        </div>
+
+        <!-- ANNOUNCEMENTS -->
+        <div id="announcementsSection" class="section" style="display:none;">
+
+            <h2>Announcements</h2>
+
+            <!-- ANNOUNCEMENT FILTER -->
+            <div class="announcement-filter">
+
+                <input
+                    type="text"
+                    id="announcementSearch"
+                    placeholder="Search title or description..."
+                >
+
+                <select id="announcementStatusFilter">
+                    <option value="">All Status</option>
+                    <option value="Active">Active</option>
+                    <option value="Upcoming">Upcoming</option>
+                    <option value="Expired">Expired</option>
+                </select>
+
+                <span class="date-label">Date:</span>
+
+                <input
+                    type="date"
+                    id="announcementDateFrom"
+                    title="From Date"
+                >
+
+                <span class="date-to">to</span>
+
+                <input
+                    type="date"
+                    id="announcementDateTo"
+                    title="To Date"
+                >
+
+                <button
+                    class="btn announcement-clear"
+                    onclick="clearAnnouncementFilter()"
+                >
+                    Clear
+                </button>
+
+            </div>
+
+            <button class="add-btn" onclick="openAnnouncementModal()">
+                + Add Announcement
+            </button>
+
+            <div id="announcementResultCount" class="result-count">
+                Showing 0 results
+            </div>
+
+            <div id="announcementList">
+                <!-- Announcements will be loaded here -->
+            </div>
+
+        </div>
+        
+
+        <!-- PROFILE -->
+        <div id="profileSection" class="section" style="display:none;">
+
+            <h2>Restaurant Profile</h2>
+
+            <div class="profile-container">
+
+                <div class="form-group">
+                    <label>Restaurant ID</label>
+                    <input type="text" id="restaurantId" class="edit-field" readonly>
+                    <span id="restaurantIdText" class="view-field"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Restaurant Name</label>
+                    <input type="text" id="restaurantName" class="edit-field" readonly>
+                    <span id="restaurantNameText" class="view-field"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Branch</label>
+                    <input type="text" id="branch" class="edit-field" readonly>
+                    <span id="branchText" class="view-field"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Full Address</label>
+                    <input type="text" id="fullAddress" class="edit-field">
+                    <span id="fullAddressText" class="view-field"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>State</label>
+                    <select id="state" class="edit-field" onchange="loadDistricts()">
+                        <option value="">-- Select State --</option>
+                    </select>
+                    <span id="stateText" class="view-field"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>District</label>
+                    <select id="district" class="edit-field">
+                        <option value="">-- Select District --</option>
+                    </select>
+                    <span id="districtText" class="view-field"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Cuisine Type</label>
+                    <select id="restaurantCuisine" class="edit-field">
+                        <option value="">-- Select Cuisine Type --</option>
+                        <option value="Malaysian">Malaysian</option>
+                        <option value="Chinese">Chinese</option>
+                        <option value="Japanese">Japanese</option>
+                        <option value="Korean">Korean</option>
+                        <option value="Thai">Thai</option>
+                        <option value="Taiwanese">Taiwanese</option>
+                        <option value="Indian">Indian</option>
+                        <option value="Western">Western</option>
+                        <option value="Italian">Italian</option>
+                        <option value="Mexican">Mexican</option>
+                        <option value="Others">Others</option>
+                    </select>
+
+                    <span id="restaurantCuisineText" class="view-field"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Halal Status</label>
+
+                    <select id="halalStatus" class="edit-field">
+                        <option value="">-- Select Halal Status --</option>
+                        <option value="Halal">Halal</option>
+                        <option value="Non-Halal">Non-Halal</option>
+                    </select>
+
+                    <span id="halalStatusText" class="view-field"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Restaurant Description</label>
+
+                    <textarea
+                        id="restaurantDescription"
+                        class="edit-field"
+                        rows="4"
+                        placeholder="Enter a brief description of your restaurant..."
+                    ></textarea>
+
+                    <span id="restaurantDescriptionText" class="view-field"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Restaurant History (Optional)</label>
+
+                    <textarea
+                        id="restaurantHistory"
+                        class="edit-field"
+                        rows="5"
+                        placeholder="Enter the history of your restaurant..."
+                    ></textarea>
+
+                    <span id="restaurantHistoryText" class="view-field"></span>
+                </div>
+
+                <div class="form-group">
+
+                    <label>Restaurant Image</label>
+
+                    <div id="restaurantImageFrame" class="restaurant-image-frame">
+
+                        <img 
+                            id="imagePreview" 
+                            src="images/default-restaurant.png"
+                            style="display:none;"
+                        >
+
+                        <div id="noRestaurantImage" class="no-restaurant-image">
+                            <i class="fa-solid fa-image"></i>
+                            <span>No restaurant image</span>
+                        </div>
+
+                    </div>
+
+                    <label 
+                        for="restaurantImage" 
+                        class="file-input restaurant-file-input edit-field">
+
+                        <span id="restaurantFileNameDisplay">
+                            No file chosen
+                        </span>
+
+                        <span class="choose-btn">
+                            Choose File
+                        </span>
+
+                        <input
+                            type="file"
+                            id="restaurantImage"
+                            accept="image/*">
+
+                    </label>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Opening Hours</label>
+
+                    <div id="openingHoursEditor" class="opening-hours-editor edit-field">
+
+                        <!-- Monday -->
+                        <div class="opening-day" data-day="monday">
+
+                            <label>
+                                <input type="checkbox" id="mondayOpen" checked>
+                                Monday
+                            </label>
+
+                            <div class="opening-sessions">
+
+                                <div class="opening-session">
+                                    <input type="time" id="mondayOpenTime1">
+                                    <span>to</span>
+                                    <input type="time" id="mondayCloseTime1">
+                                </div>
+
+                                <div
+                                    class="opening-session second-session"
+                                    id="mondaySession2"
+                                    style="display:none;"
+                                >
+                                    <input type="time" id="mondayOpenTime2">
+                                    <span>to</span>
+                                    <input type="time" id="mondayCloseTime2">
+
+                                    <button
+                                        type="button"
+                                        class="remove-session-btn"
+                                        onclick="removeOpeningSession('monday')"
+                                    >
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="add-session-btn"
+                                    id="mondayAddSession"
+                                    onclick="addOpeningSession('monday')"
+                                >
+                                    + Add another session
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Tuesday -->
+                        <div class="opening-day" data-day="tuesday">
+
+                            <label>
+                                <input type="checkbox" id="tuesdayOpen" checked>
+                                Tuesday
+                            </label>
+
+                            <div class="opening-sessions">
+
+                                <div class="opening-session">
+                                    <input type="time" id="tuesdayOpenTime1">
+                                    <span>to</span>
+                                    <input type="time" id="tuesdayCloseTime1">
+                                </div>
+
+                                <div
+                                    class="opening-session second-session"
+                                    id="tuesdaySession2"
+                                    style="display:none;"
+                                >
+                                    <input type="time" id="tuesdayOpenTime2">
+                                    <span>to</span>
+                                    <input type="time" id="tuesdayCloseTime2">
+
+                                    <button
+                                        type="button"
+                                        class="remove-session-btn"
+                                        onclick="removeOpeningSession('tuesday')"
+                                    >
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="add-session-btn"
+                                    id="tuesdayAddSession"
+                                    onclick="addOpeningSession('tuesday')"
+                                >
+                                    + Add another session
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Wednesday -->
+                        <div class="opening-day" data-day="wednesday">
+
+                            <label>
+                                <input type="checkbox" id="wednesdayOpen" checked>
+                                Wednesday
+                            </label>
+
+                            <div class="opening-sessions">
+
+                                <div class="opening-session">
+                                    <input type="time" id="wednesdayOpenTime1">
+                                    <span>to</span>
+                                    <input type="time" id="wednesdayCloseTime1">
+                                </div>
+
+                                <div
+                                    class="opening-session second-session"
+                                    id="wednesdaySession2"
+                                    style="display:none;"
+                                >
+                                    <input type="time" id="wednesdayOpenTime2">
+                                    <span>to</span>
+                                    <input type="time" id="wednesdayCloseTime2">
+
+                                    <button
+                                        type="button"
+                                        class="remove-session-btn"
+                                        onclick="removeOpeningSession('wednesday')"
+                                    >
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="add-session-btn"
+                                    id="wednesdayAddSession"
+                                    onclick="addOpeningSession('wednesday')"
+                                >
+                                    + Add another session
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Thursday -->
+                        <div class="opening-day" data-day="thursday">
+
+                            <label>
+                                <input type="checkbox" id="thursdayOpen" checked>
+                                Thursday
+                            </label>
+
+                            <div class="opening-sessions">
+
+                                <div class="opening-session">
+                                    <input type="time" id="thursdayOpenTime1">
+                                    <span>to</span>
+                                    <input type="time" id="thursdayCloseTime1">
+                                </div>
+
+                                <div
+                                    class="opening-session second-session"
+                                    id="thursdaySession2"
+                                    style="display:none;"
+                                >
+                                    <input type="time" id="thursdayOpenTime2">
+                                    <span>to</span>
+                                    <input type="time" id="thursdayCloseTime2">
+
+                                    <button
+                                        type="button"
+                                        class="remove-session-btn"
+                                        onclick="removeOpeningSession('thursday')"
+                                    >
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="add-session-btn"
+                                    id="thursdayAddSession"
+                                    onclick="addOpeningSession('thursday')"
+                                >
+                                    + Add another session
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Friday -->
+                        <div class="opening-day" data-day="friday">
+
+                            <label>
+                                <input type="checkbox" id="fridayOpen" checked>
+                                Friday
+                            </label>
+
+                            <div class="opening-sessions">
+
+                                <div class="opening-session">
+                                    <input type="time" id="fridayOpenTime1">
+                                    <span>to</span>
+                                    <input type="time" id="fridayCloseTime1">
+                                </div>
+
+                                <div
+                                    class="opening-session second-session"
+                                    id="fridaySession2"
+                                    style="display:none;"
+                                >
+                                    <input type="time" id="fridayOpenTime2">
+                                    <span>to</span>
+                                    <input type="time" id="fridayCloseTime2">
+
+                                    <button
+                                        type="button"
+                                        class="remove-session-btn"
+                                        onclick="removeOpeningSession('friday')"
+                                    >
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="add-session-btn"
+                                    id="fridayAddSession"
+                                    onclick="addOpeningSession('friday')"
+                                >
+                                    + Add another session
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Saturday -->
+                        <div class="opening-day" data-day="saturday">
+
+                            <label>
+                                <input type="checkbox" id="saturdayOpen" checked>
+                                Saturday
+                            </label>
+
+                            <div class="opening-sessions">
+
+                                <div class="opening-session">
+                                    <input type="time" id="saturdayOpenTime1">
+                                    <span>to</span>
+                                    <input type="time" id="saturdayCloseTime1">
+                                </div>
+
+                                <div
+                                    class="opening-session second-session"
+                                    id="saturdaySession2"
+                                    style="display:none;"
+                                >
+                                    <input type="time" id="saturdayOpenTime2">
+                                    <span>to</span>
+                                    <input type="time" id="saturdayCloseTime2">
+
+                                    <button
+                                        type="button"
+                                        class="remove-session-btn"
+                                        onclick="removeOpeningSession('saturday')"
+                                    >
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="add-session-btn"
+                                    id="saturdayAddSession"
+                                    onclick="addOpeningSession('saturday')"
+                                >
+                                    + Add another session
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Sunday -->
+                        <div class="opening-day" data-day="sunday">
+
+                            <label>
+                                <input type="checkbox" id="sundayOpen" checked>
+                                Sunday
+                            </label>
+
+                            <div class="opening-sessions">
+
+                                <div class="opening-session">
+                                    <input type="time" id="sundayOpenTime1">
+                                    <span>to</span>
+                                    <input type="time" id="sundayCloseTime1">
+                                </div>
+
+                                <div
+                                    class="opening-session second-session"
+                                    id="sundaySession2"
+                                    style="display:none;"
+                                >
+                                    <input type="time" id="sundayOpenTime2">
+                                    <span>to</span>
+                                    <input type="time" id="sundayCloseTime2">
+
+                                    <button
+                                        type="button"
+                                        class="remove-session-btn"
+                                        onclick="removeOpeningSession('sunday')"
+                                    >
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="add-session-btn"
+                                    id="sundayAddSession"
+                                    onclick="addOpeningSession('sunday')"
+                                >
+                                    + Add another session
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- View mode -->
+                    <div id="openingHoursText" class="view-field"></div>
+
+                </div>
+
+
+                <div class="form-group">
+                    <label>Contact Number (Optional)</label>
+
+                    <input
+                        type="tel"
+                        id="contactNumber"
+                        class="edit-field"
+                        placeholder="e.g. 0123456789"
+                        maxlength="11"
+                        inputmode="numeric"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11)"
+                    >
+
+                    <span id="contactNumberText" class="view-field"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Social Media (Optional)</label>
+
+                    <div class="social-media-fields">
+
+                        <div class="social-media-input">
+                            <i class="fa-brands fa-facebook"></i>
+                            <input
+                                type="url"
+                                id="facebookLink"
+                                class="edit-field"
+                                placeholder="Facebook URL"
+                            >
+                        </div>
+
+                        <div class="social-media-input">
+                            <i class="fa-brands fa-instagram"></i>
+                            <input
+                                type="url"
+                                id="instagramLink"
+                                class="edit-field"
+                                placeholder="Instagram URL"
+                            >
+                        </div>
+
+                        <div class="social-media-input">
+                            <i class="fa-brands fa-tiktok"></i>
+                            <input
+                                type="url"
+                                id="tiktokLink"
+                                class="edit-field"
+                                placeholder="TikTok URL"
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="social-media-view view-field" id="socialMediaText"></div>
+                </div>
+
+
+                <button id="editBtn" class="btn edit-profile" onclick="editProfile()">
+                    Edit Profile
+                </button>
+
+                <button id="saveBtn" class="btn save" onclick="saveProfile()" style="display:none;">
+                    Save Changes
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- NOTIFICATIONS -->
+        <div id="notificationsSection" class="section" style="display:none;">
+
+            <h2>Notifications</h2>
+
+            <div id="notificationList"></div>
+
+        </div>
+
+        
+        <!-- CONTACT ADMIN -->
+        <div id="supportSection" class="section" style="display:none;">
+
+            <h2>Contact Admin</h2>
+
+            <div class="support-card">
+                <h3>Submit a Support Request</h3>
+
+                <div class="form-group">
+                    <label for="restaurantSupportCategory">Category</label>
+                    <select id="restaurantSupportCategory">
+                        <option value="">-- Select Category --</option>
+                        <option value="Account">Account</option>
+                        <option value="Restaurant Profile">Restaurant Profile</option>
+                        <option value="Menu Management">Menu Management</option>
+                        <option value="Reviews">Reviews</option>
+                        <option value="Technical Issue">Technical Issue</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="restaurantSupportSubject">Subject</label>
+                    <input
+                        type="text"
+                        id="restaurantSupportSubject"
+                        maxlength="150"
+                        placeholder="Enter the subject"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="restaurantSupportDescription">Description</label>
+                    <textarea
+                        id="restaurantSupportDescription"
+                        rows="5"
+                        maxlength="3000"
+                        placeholder="Describe your issue or question..."
+                    ></textarea>
+                </div>
+
+                <button
+                    type="button"
+                    class="btn save"
+                    onclick="submitRestaurantSupportRequest()"
+                >
+                    Submit Request
+                </button>
+
+                <p id="restaurantSupportFeedback" class="support-feedback"></p>
+            </div>
+
+            <div class="support-card">
+                <h3>My Support Requests</h3>
+
+                <div id="restaurantSupportRequestList">
+                    <p>Loading support requests...</p>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<!-- Add/Edit Food Modal -->
+<div id="foodModal" class="modal">
+
+    <div class="modal-content food-modal">
+
+        <span class="close" onclick="closeFoodModal()">&times;</span>
+
+        <h2 id="foodModalTitle">Add Food</h2>
+
+        <div class="form-group">
+            <label>Food Name</label>
+            <input type="text" id="foodName">
+        </div>
+
+        <div class="form-group">
+            <label>Food Image</label>
+
+            <label for="foodImage" class="file-input">
+
+                <span id="fileNameDisplay">No file chosen</span>
+
+                <span class="choose-btn">
+                    Choose File
+                </span>
+
+                <input
+                    type="file"
+                    id="foodImage"
+                    accept="image/*">
+
+            </label>
+
+        </div>
+
+        <div class="form-group">
+            <label>Price (RM)</label>
+            <input type="number" id="foodPrice" step="0.01">
+        </div>
+
+        <!-- Category -->
+        <div class="form-group">
+            <label>Category</label>
+
+            <select id="foodCategory" onchange="handleCategoryChange()">
+
+                <option value="">-- Select Category --</option>
+
+                <option value="Rice">Rice</option>
+                <option value="Rice Bowl">Rice Bowl</option>
+                <option value="Porridge">Porridge</option>
+
+                <option value="Noodles">Noodles</option>
+                <option value="Ramen">Ramen</option>
+                <option value="Laksa">Laksa</option>
+
+                <option value="Pasta">Pasta</option>
+                <option value="Pizza">Pizza</option>
+                <option value="Burger">Burger</option>
+                <option value="Sandwich">Sandwich</option>
+                <option value="Steak">Steak</option>
+
+                <option value="Chicken">Chicken</option>
+                <option value="Beef">Beef</option>
+                <option value="Lamb">Lamb</option>
+                <option value="Fish">Fish</option>
+                <option value="Seafood">Seafood</option>
+
+                <option value="Soup">Soup</option>
+                <option value="Curry">Curry</option>
+
+                <option value="Appetizer">Appetizer</option>
+                <option value="Dim Sum">Dim Sum</option>
+                <option value="Dumplings">Dumplings</option>
+                <option value="Snack">Snack</option>
+                <option value="Side Dish">Side Dish</option>
+
+                <option value="Salad">Salad</option>
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Vegan">Vegan</option>
+
+                <option value="Bread">Bread</option>
+                <option value="Roti">Roti</option>
+                <option value="Pastry">Pastry</option>
+                <option value="Toast">Toast</option>
+
+                <option value="Cake">Cake</option>
+                <option value="Ice Cream">Ice Cream</option>
+                <option value="Pudding">Pudding</option>
+                <option value="Traditional Dessert">Traditional Dessert</option>
+                <option value="Dessert">Dessert</option>
+
+                <option value="Coffee">Coffee</option>
+                <option value="Tea">Tea</option>
+                <option value="Juice">Juice</option>
+                <option value="Smoothie">Smoothie</option>
+                <option value="Milkshake">Milkshake</option>
+                <option value="Beverage">Beverage</option>
+
+                <option value="Set Meal">Set Meal</option>
+                <option value="Combo">Combo</option>
+                <option value="Traditional Food">Traditional Food</option>
+                <option value="Others">Others</option>
+
+            </select>
+
+            <!-- Custom category -->
+            <input
+                type="text"
+                id="customFoodCategory"
+                placeholder="Enter your category"
+                style="display:none; margin-top:10px;"
+            >
+        </div>
+
+
+        <!-- Meal Type -->
+        <div class="form-group">
+
+            <label>Meal Type</label>
+
+            <div class="meal-type-options">
+
+                <label>
+                    <input type="checkbox" name="mealType" value="Breakfast">
+                    Breakfast
+                </label>
+
+                <label>
+                    <input type="checkbox" name="mealType" value="Lunch">
+                    Lunch
+                </label>
+
+                <label>
+                    <input type="checkbox" name="mealType" value="Dinner">
+                    Dinner
+                </label>
+
+                <label>
+                    <input type="checkbox" name="mealType" value="All-Day">
+                    All-Day
+                </label>
+
+            </div>
+
+        </div>
+
+        <!-- Popular Food -->
+        <div class="form-group">
+
+            <label>Food Status</label>
+
+            <label class="popular-food-option">
+                <input
+                    type="checkbox"
+                    id="foodIsPopular"
+                >
+                Popular Food
+            </label>
+
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <textarea id="foodDescription" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Cultural Information (optional)</label>
+            <textarea id="foodCulture" rows="4"></textarea>
+        </div>
+
+        <button class="btn save" onclick="saveFood()">
+            Save Food
+        </button>
+
+    </div>
+
+</div>
+
+<!-- Add/Edit Announcement Modal -->
+<div id="announcementModal" class="modal">
+
+    <div class="modal-content announcement-modal">
+
+        <span class="close" onclick="closeAnnouncementModal()">&times;</span>
+
+        <h2 id="announcementModalTitle">Add Announcement</h2>
+
+        <div class="form-group">
+            <label>Announcement Title</label>
+            <input
+                type="text"
+                id="announcementTitle"
+                placeholder="Enter announcement title"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <textarea
+                id="announcementDescription"
+                rows="5"
+                placeholder="Enter announcement details..."
+            ></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Start Date</label>
+            <input
+                type="date"
+                id="announcementStartDate"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>End Date</label>
+            <input
+                type="date"
+                id="announcementEndDate"
+            >
+        </div>
+
+        <button
+            class="btn save"
+            onclick="saveAnnouncement()"
+        >
+            Save Announcement
+        </button>
+
+    </div>
+
+</div>
+
+<div id="imageModal" class="image-modal">
+    <div class="image-modal-content">
+
+        <span class="close-image" onclick="closeImageModal()">&times;</span>
+
+        <img id="modalImage">
+
+    </div>
+</div>
+
+<script src="js/restaurant.js"></script>
+
+</body>
+</html>

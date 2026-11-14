@@ -1,0 +1,201 @@
+/* =========================================
+   EMAIL VERIFICATION PAGE
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Nunito Sans", sans-serif;
+
+    background: #f5efe7;
+    color: #333;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.verification-container {
+    width: 90%;
+    max-width: 500px;
+
+    background: white;
+
+    padding: 45px 35px;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo {
+    font-size: 30px;
+    font-weight: 800;
+
+    color: #ff7a00;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   SUCCESS ICON
+========================================= */
+
+.check-circle {
+    width: 80px;
+    height: 80px;
+
+    margin: 0 auto 25px;
+
+    border-radius: 50%;
+
+    background: #e8f7ed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 42px;
+    font-weight: 700;
+
+    color: #28a745;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+h1 {
+    margin: 0 0 12px;
+
+    font-size: 28px;
+    font-weight: 800;
+
+    color: #333;
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.message {
+    margin: 0 auto 25px;
+
+    max-width: 400px;
+
+    font-size: 16px;
+    line-height: 1.6;
+
+    color: #777;
+}
+
+
+/* =========================================
+   COUNTDOWN
+========================================= */
+
+.countdown {
+    font-size: 15px;
+    font-weight: 600;
+
+    color: #666;
+}
+
+.countdown span {
+    font-weight: 800;
+
+    color: #ff7a00;
+}
+
+
+/* =========================================
+   LOGIN BUTTON
+========================================= */
+
+.login-button {
+    display: inline-block;
+
+    padding: 12px 28px;
+
+    margin-top: 18px;
+
+    background: #ff7a00;
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+.login-button:hover {
+    background: #e66d00;
+}
+
+
+/* =========================================
+   SMALL TEXT
+========================================= */
+
+.small-text {
+    margin-top: 20px;
+
+    font-size: 13px;
+
+    color: #999;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 500px) {
+
+    .verification-container {
+        padding: 35px 25px;
+    }
+
+    .logo {
+        font-size: 26px;
+    }
+
+    .check-circle {
+        width: 70px;
+        height: 70px;
+
+        font-size: 36px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .message {
+        font-size: 15px;
+    }
+}

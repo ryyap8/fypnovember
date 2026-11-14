@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/profile.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+
+        <div class="logo">
+            <i class="fa-solid fa-utensils"></i> FoodRoutes
+        </div>
+
+        <div class="nav-center" id="navCenter"></div>
+        <div class="nav-right" id="navRight"></div>
+
+    </nav>
+
+    <!-- Profile Content -->
+    <section class="profile-container">
+
+        <div class="profile-box">
+
+            <div class="profile-header">
+                <h1>My Profile</h1>
+
+                <button class="edit-btn">
+                    Edit Profile
+                </button>
+            </div>
+
+            <div class="profile-content">
+
+                <div class="top-profile">
+
+                    <div class="avatar" id="avatar">
+
+                        <img id="profileImage" src="" alt="Profile Picture">
+
+                        <i class="fa-solid fa-user profile-user-icon" id="defaultAvatar"></i>
+
+                        <label for="profilePicture" class="upload-avatar" id="uploadAvatar">
+                            <i class="fa-solid fa-camera"></i>
+                        </label>
+
+                        <input 
+                            type="file"
+                            id="profilePicture"
+                            accept="image/*"
+                            hidden
+                        >
+
+                    </div>
+
+                    <div class="name-box">
+
+                        <h2 class="big-username" id="bigUsername"></h2>
+
+                        <p class="big-email" id="bigEmail"></p>
+
+                    </div>
+
+                </div>
+
+                <div class="info-item">
+                    <strong>Username:</strong>
+                    <span id="username"></span>
+                </div>
+
+                <div class="info-item">
+                    <strong>Email:</strong>
+                    <span id="email"></span>
+                </div>
+
+                <!-- Profile Statistics -->
+                <div class="profile-stats">
+
+                    <div class="stat-item">
+                        <i class="fa-solid fa-heart"></i>
+                        <span class="stat-number" id="favouriteCount">0</span>
+                        <span class="stat-label">Favourites</span>
+                    </div>
+
+                    <div class="stat-item">
+                        <i class="fa-solid fa-route"></i>
+                        <span class="stat-number" id="routeCount">0</span>
+                        <span class="stat-label">Routes</span>
+                    </div>
+
+                    <div class="stat-item">
+                        <i class="fa-solid fa-star"></i>
+                        <span class="stat-number" id="reviewCount">0</span>
+                        <span class="stat-label">Reviews</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 FoodRoutes. Discover, Plan, Enjoy.
+    </footer>
+
+    <script src="/js/navbar.js"></script>
+    <script src="/js/profile.js"></script>
+
+</body>
+
+</html>

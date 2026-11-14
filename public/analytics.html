@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Analytics Dashboard</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/analytics.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-utensils"></i> FoodRoutes
+        </div>
+
+        <div class="nav-center" id="navCenter"></div>
+        <div class="nav-right" id="navRight"></div>
+    </nav>
+
+    <!-- ================================
+     ANALYTICS CONTENT
+================================= -->
+
+<div class="container">
+
+
+    <!-- Header -->
+
+    <div class="header">
+
+        <h1>
+
+            Restaurant Analytics Dashboard
+
+        </h1>
+
+    </div>
+
+
+
+    <!-- ================================
+         SUMMARY CARDS
+    ================================= -->
+
+    <div class="cards">
+
+
+        <!-- Total Restaurants -->
+
+        <div class="card orange">
+
+            <p>
+                Total Restaurants
+            </p>
+
+            <h2 id="totalRestaurants">
+                0
+            </h2>
+
+        </div>
+
+
+
+        <!-- Cuisines -->
+
+        <div class="card blue">
+
+            <p>
+                Total Cuisines
+            </p>
+
+            <h2 id="totalCuisines">
+                0
+            </h2>
+
+        </div>
+
+
+
+        <!-- Average Rating -->
+
+        <div class="card green">
+
+            <p>
+                Avg Rating
+            </p>
+
+            <h2 id="averageRating">
+                0.0
+            </h2>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ================================
+         CHARTS
+    ================================= -->
+
+    <div class="grid-2">
+
+
+        <!-- Cuisine Distribution -->
+
+        <div class="box">
+
+            <h3>
+                Cuisine Distribution
+            </h3>
+
+            <canvas id="pieChart"></canvas>
+
+        </div>
+
+
+
+        <!-- Restaurants by State -->
+
+        <div class="box">
+
+            <h3>
+                Restaurants by State
+            </h3>
+
+            <canvas id="barChart"></canvas>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ================================
+         RATING FILTER
+    ================================= -->
+
+    <div class="filter">
+
+        <span>
+            Show rating activity:
+        </span>
+
+
+        <button
+            class="btn"
+            data-period="today"
+        >
+            Today
+        </button>
+
+
+        <button
+            class="btn active"
+            data-period="week"
+        >
+            This Week
+        </button>
+
+
+        <button
+            class="btn"
+            data-period="month"
+        >
+            This Month
+        </button>
+
+
+        <button
+            class="btn"
+            data-period="all"
+        >
+            All Time
+        </button>
+
+    </div>
+
+
+
+    <!-- ================================
+         TOP RATED
+    ================================= -->
+
+    <div class="section">
+
+        <h3 id="topRatedTitle">
+            Top Rated Restaurants This Week
+        </h3>
+
+
+        <canvas
+            id="topRatedChart">
+        </canvas>
+
+    </div>
+
+
+
+    <!-- ================================
+         MOST REVIEWED
+    ================================= -->
+
+    <div class="section">
+
+        <h3 id="mostReviewedTitle">
+            Most Reviewed Restaurants This Week
+        </h3>
+
+
+        <canvas
+            id="mostReviewedChart">
+        </canvas>
+
+    </div>
+
+
+
+    <!-- ================================
+         TOP RESTAURANTS
+    ================================= -->
+
+    <div class="section top-performers">
+
+        <h3 id="restaurantListTitle">
+            Top Rated Restaurants This Week
+        </h3>
+
+
+        <div
+            class="performer-list"
+            id="performerList">
+
+            <!--
+                Restaurant cards will be
+                generated dynamically
+            -->
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- ================================
+     FOOTER
+================================= -->
+
+<footer>
+
+    © 2026 FoodRoutes. Discover, Plan, Enjoy.
+
+</footer>
+
+
+
+<!-- ================================
+     JAVASCRIPT
+================================= -->
+
+<script src="/js/analytics.js"></script>
+
+<script src="/js/navbar.js"></script>
+
+</body>
+
+</html>

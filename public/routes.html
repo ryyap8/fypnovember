@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Your Food Route</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/routes.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-utensils"></i> FoodRoutes
+        </div>
+
+        <div class="nav-center" id="navCenter"></div>
+        <div class="nav-right" id="navRight"></div>
+    </nav>
+
+    <!-- Routes Content -->
+    <section class="section header">
+        <h1></i> Plan Your Food Route</h1>
+        <p>Create your perfect food journey! Plan your own route by selecting foods for breakfast, lunch, and dinner, or let our system recommend the best route based on your preferences.</p>
+    </section>
+
+    <section class="section container">
+
+        <div class="card">
+            <div class="card-icon route-user-icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <h2>User-Planned Route</h2>
+            <p>Take control and create your own custom food route. Choose exactly what you want for breakfast, lunch and dinner.</p>
+
+            <ul>
+                <li><i class="fa-solid fa-check"></i> Select your preferred location and date</li>
+                <li><i class="fa-solid fa-check"></i> Choose restaurants and foods for each meal</li>
+                <li><i class="fa-solid fa-check"></i> Plan your meals within your daily budget</li>
+                <li><i class="fa-solid fa-check"></i> Save and view your food route</li>
+            </ul>
+
+            <button class="btn btn-blue" id="createMyRouteBtn">Create My Route</button>
+        </div>
+
+        <div class="card">
+
+            <div class="card-icon ai-icon">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+
+            <h2>System-Generated Route</h2>
+
+            <p>
+                Let the system recommend a food route based on your location, budget, meal preferences, ratings, and popularity.</p>
+
+            <ul>
+                <li><i class="fa-solid fa-check"></i>Select your preferred location and date</li>
+
+                <li><i class="fa-solid fa-check"></i>Set your daily budget</li>
+
+                <li><i class="fa-solid fa-check"></i>Choose your meal preferences</li>
+
+                <li><i class="fa-solid fa-check"></i>Get restaurant recommendations based on ratings and popularity</li>
+            </ul>
+
+            <button class="btn btn-orange" id="generateRouteBtn">Generate Route</button>
+
+        </div>
+
+    </section>
+
+    <section class="section saved">
+
+        <div class="saved-header">
+            <h2>My Saved Routes</h2>
+            <span id="routeCount">0 routes</span>
+        </div>
+
+        <div id="savedRoutesContainer" class="saved-routes-container">
+
+            <div class="empty-box">
+                <i class="fa-solid fa-route"></i>
+                <p>Loading your saved routes...</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 FoodRoutes. Discover, Plan, Enjoy.
+    </footer>
+
+    <script src="/js/navbar.js"></script>
+
+    <script>
+        document.getElementById("createMyRouteBtn")
+            .addEventListener("click", function () {
+
+                window.location.href =
+                    "/routes-planner.html";
+
+            });
+
+        document.getElementById("generateRouteBtn")
+            .addEventListener("click", function () {
+
+                window.location.href = 
+                    "/routes-generated.html";
+            });
+    </script>
+
+    <script src="/js/routes.js"></script>
+
+</body>
+</html>

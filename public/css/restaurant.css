@@ -1,0 +1,1516 @@
+body {
+    margin: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    background: #f7f3e9;
+}
+
+/* =========================
+   MAIN LAYOUT
+========================= */
+.restaurant-container {
+    display: block;
+}
+
+/* =========================
+   SIDEBAR (ADMIN STYLE MATCH)
+========================= */
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    background: #f58b00;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    /* IMPORTANT for bottom menu */
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    padding: 10px 2px;
+    font-size: 15px;
+    border-radius: 8px;
+    opacity: 1.0;
+    transition: 0.2s ease;
+}
+
+.sidebar a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    opacity: 1;
+}
+
+/* TOP MENU */
+.menu-top {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* BOTTOM MENU (sticks to bottom) */
+.menu-bottom {
+    margin-top: auto;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Optional icon styling */
+.sidebar i {
+    width: 20px;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+.main-content {
+    margin-left: 240px;
+    padding: 30px;
+    width: calc(100% - 240px);
+    box-sizing: border-box;
+}
+
+/* TITLE */
+h1 {
+    margin-bottom: 20px;
+}
+
+/* =========================
+   SECTION CONTROL
+========================= */
+.section {
+    display: none;
+}
+
+#overviewSection {
+    display: block;
+}
+
+/* =========================
+   PAGE TITLE
+========================= */
+.section h1,
+.section h2 {
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* =========================
+   STATS CARDS
+========================= */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    width: 100%;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+
+    min-height: 150px;
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    transition: 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #666;
+}
+
+.card p {
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* =========================
+   CHART CONTAINER
+========================= */
+.chart-container {
+    margin-top: 50px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+    width: 96.5%;
+}
+
+.chart-container h2 {
+    margin-bottom: 15px;
+}
+
+.chart-container canvas {
+    width: 100% !important;
+    max-height: 450px;
+}
+
+/* ==========================
+   Review Chart Header
+========================== */
+
+.review-chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.review-chart-header h2 {
+    margin: 0;
+}
+
+
+/* ==========================
+   Review Period Tabs
+========================== */
+
+.review-period-tabs {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.review-tab {
+    border: none;
+    padding: 7px 12px;
+    border-radius: 8px;
+    background: #f5efe7;
+    color: #555;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.review-tab:hover {
+    background: #eadfce;
+}
+
+.review-tab.active {
+    background: #f58b00;
+    color: white;
+}
+
+
+/* ==========================
+   Analytics Chart
+========================== */
+
+.analytics-chart-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+/* =========================
+   TABLE STYLE
+========================= */
+.table {
+    margin-top: 15px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 0.8fr 0.8fr 0.8fr 0.8fr 0.8fr 2fr 2fr 1.3fr;
+    padding: 12px;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    justify-items: center;   
+    column-gap: 20px;     
+}
+
+.table-row > :nth-child(2) {
+    text-align: center;
+    justify-self: center;
+}
+
+.table-row > :nth-child(5) {
+    text-align: center;
+    justify-self: center;
+}
+
+.table-row.header {
+    background: #ffb555;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* FOOD SEARCH BOX */
+.food-filter {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.food-filter input,
+.food-filter select {
+    padding: 14px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+#foodSearch {
+    width: 630px;
+}
+
+.btn.food-clear {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.btn.food-clear:hover {
+    opacity: 0.8;
+}
+
+/* Add food */
+.food-modal{
+    width:900px;         
+    max-width:95%;
+    max-height:70vh;      
+    overflow-y:auto;      
+    background:#fff;
+    border-radius:10px;
+    padding:50px;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;              
+    background:rgba(0,0,0,.5);
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.modal-content{
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:18px;
+}
+
+.form-group label{
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:14px;
+}
+
+.food-img{
+    width:80px;
+    height:80px;
+    object-fit:cover;
+    border-radius:6px;
+}
+
+.image-modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.15);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.image-modal-content{
+    position:relative;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    max-width:90%;
+    max-height:90%;
+}
+
+.image-modal-content img{
+    display:block;
+    max-width:800px;
+    max-height:80vh;
+}
+
+.close-image{
+    position:absolute;
+    top:8px;
+    right:15px;
+    font-size:28px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.file-input-box{
+    width:90%;
+    height:45px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    padding:0 12px;
+    box-sizing:border-box;
+    background:white;
+    cursor:pointer;
+}
+
+
+.file-input-box input[type="file"]{
+    display:none;
+}
+
+.file-input{
+    width:93%;
+    height:48px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 12px;
+    box-sizing:border-box;
+    background:#fff;
+    cursor:pointer;
+}
+
+.file-input input{
+    display:none;
+}
+
+#fileNameDisplay{
+    color:#666;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    flex:1;
+}
+
+.choose-btn{
+    background:#f58b00;
+    color:#fff;
+    padding:8px 14px;
+    border-radius:6px;
+    font-size:14px;
+    font-weight:600;
+    margin-left:15px;
+    white-space:nowrap;
+}
+
+.choose-btn:hover{
+    background:#e67e00;
+}
+
+.meal-type-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 15px;
+}
+
+.meal-type-options label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.meal-type-options input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    cursor: pointer;
+}
+
+/* =========================
+   POPULAR FOOD
+========================= */
+
+.popular-food-option {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.popular-food-option input[type="checkbox"] {
+    width: 13px;
+    height: 13px;
+    accent-color: #f58b00;
+    cursor: pointer;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+    font-size: 13px;
+}
+
+/* BUTTON TYPES */
+.btn.edit {
+    background: #3498db;
+    color: white;
+}
+
+.btn.delete {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn.view {
+    background: #f1c40f;
+    color: black;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+/* =========================
+   ADD BUTTON
+========================= */
+.add-btn {
+    background: #f58b00;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.add-btn:hover {
+    background: #e67e00;
+}
+
+/* =========================
+   REVIEW SECTION
+========================= */
+.review-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.review-username {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.review-rating {
+    font-size: 17px;
+    color: #f1c40f;
+}
+
+.review-comment {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-top: 8px;
+    color: #555;
+}
+
+.review-date {
+    text-align: right;
+    color: #666;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+
+/* REVIEW FILTER */
+
+.review-filter {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.review-filter input,
+.review-filter select {
+    padding: 14px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+#reviewSearch {
+    width: 500px;
+}
+
+.date-label,
+.date-to {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 15px;
+    color: #43464b;
+    font-weight: 600;
+}
+
+.btn.review-clear {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.btn.review-clear:hover {
+    opacity: 0.8;
+}
+
+/* ==========================
+   ANNOUNCEMENT FILTER
+========================== */
+
+.announcement-filter {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.announcement-filter input,
+.announcement-filter select {
+    padding: 14px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+#announcementSearch {
+    width: 550px;
+}
+
+.btn.announcement-clear {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.btn.announcement-clear:hover {
+    opacity: 0.8;
+}
+
+.result-count {
+    margin: 15px 3px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #545454;
+}
+
+
+/* Profile Section */
+.profile-container{
+    background:#fff;
+    border-radius:12px;
+    padding:30px;
+    margin-top:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+    width: 80%;
+}
+
+.view-field{
+    display:block;
+    width:90%;
+    padding:12px;
+    background:#f8f8f8;
+    border-radius:8px;
+    font-size:15px;
+}
+
+.edit-field{
+    display:none;
+}
+
+input[readonly]{
+    background:#f5f5f5;
+    color:#666;
+    cursor:not-allowed;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:20px;
+}
+
+.form-group label{
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.form-group input,
+.form-group textarea{
+    width:90%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+
+.form-group select{
+    width:92.8%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+
+#restaurantDescription,
+#restaurantHistory,
+#restaurantSupportDescription,
+#foodDescription,
+#foodCulture,
+#announcementDescription {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+/* =========================
+   RESTAURANT IMAGE
+========================= */
+
+.restaurant-image-frame{
+    width:500px;
+    height:300px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    margin-bottom:12px;
+    background:#f8f8f8;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+}
+
+#restaurantFileNameDisplay,
+#fileNameDisplay {
+    color: #666;
+}
+
+
+#imagePreview{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+
+.no-restaurant-image{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    color:#aaa;
+    font-size:15px;
+    gap:8px;
+}
+
+
+.no-restaurant-image i{
+    font-size:45px;
+    color:#ccc;
+}
+
+
+.restaurant-file-input{
+    width:93%;
+}
+
+.btn.edit-profile{
+    margin: 20px 0 0 0; 
+    padding:12px 25px;
+    background:#007bff;
+    color:white;
+    font-size: 14px;
+}
+
+.btn.save{
+    margin: 20px 0 0 0; 
+    padding:12px 25px;
+    background-color: #28a745;
+    color: #fff;
+    font-size: 14px;
+}
+
+
+/* =========================
+   OPENING HOURS
+========================= */
+
+.opening-hours-editor {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.opening-day {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 15px;
+    background: #f8f8f8;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+}
+
+.opening-day > label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    min-width: 110px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.opening-day > label input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    cursor: pointer;
+}
+
+.opening-sessions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.opening-session {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.opening-session input[type="time"] {
+    width: 140px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.opening-session span {
+    color: #666;
+    font-size: 14px;
+}
+
+.opening-session input[type="time"]:disabled {
+    background: #e9e9e9;
+    color: #999;
+    cursor: not-allowed;
+}
+
+
+/* Add Session Button */
+
+.add-session-btn {
+    width: fit-content;
+    padding: 5px 0;
+    border: none;
+    background: none;
+    color: #f58b00;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.add-session-btn:hover {
+    color: #e67e00;
+    text-decoration: underline;
+}
+
+
+/* Remove Session Button */
+
+.remove-session-btn {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: none;
+    border-radius: 6px;
+    background: #e74c3c;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove-session-btn:hover {
+    background: #d9362b;
+}
+
+.remove-session-btn i {
+    font-size: 12px;
+}
+
+
+/* Closed Day */
+
+.opening-day.closed {
+    background: #f2f2f2;
+}
+
+.opening-day.closed > label {
+    color: #888;
+}
+
+
+/* =========================
+   OPENING HOURS VIEW MODE
+========================= */
+
+.opening-hours-display-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    padding: 9px 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.opening-hours-display-row:last-child {
+    border-bottom: none;
+}
+
+.opening-hours-display-row strong {
+    min-width: 100px;
+}
+
+.opening-hours-display-row span {
+    color: #555;
+    text-align: right;
+}
+
+.social-media-view {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.social-media-view a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #555;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.social-media-view a:hover {
+    color: #f58b00;
+    text-decoration: underline;
+}
+
+.social-media-view i {
+    width: 20px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.social-media-view a:nth-child(1) i {
+    color: #1877f2;
+}
+
+.social-media-view a:nth-child(2) i {
+    color: #e4405f;
+}
+
+.social-media-view a:nth-child(3) i {
+    color: #111;
+}
+
+.social-media-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ================================
+   Social Media Edit Icons
+================================ */
+
+.social-media-input i {
+    width: 20px;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 8px;
+    margin-right: 12px;
+}
+
+.social-media-input:nth-child(1) i {
+    color: #1877f2;
+}
+
+.social-media-input:nth-child(2) i {
+    color: #e4405f;
+}
+
+.social-media-input:nth-child(3) i {
+    color: #111;
+}
+
+
+/* notification */
+.notification-badge{
+    background:red;
+    color:white;
+    font-size:12px;
+    padding:3px 8px;
+    border-radius:50%;
+    margin-left:8px;
+}
+
+.notification-message {
+    font-size: 15px;
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.notification-message i{
+    color:#f59e0b;
+    margin-right:8px;
+    margin-top:3px;
+    font-size:15px;
+}
+
+
+.notification-text{
+    line-height:1.6;
+    text-align: left;
+    flex: 1;
+}
+
+.notification-card{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+    margin-bottom:10px;
+    border-radius:8px;
+}
+
+
+.notification-card.unread{
+    background:white;
+
+}
+
+
+.notification-card.read{
+    background:#ebe8e3;
+
+}
+
+.notification-time{
+    font-size: 13px;
+    color: #888;
+    white-space: nowrap;
+    margin-left: 20px;
+    align-self: flex-end;
+}
+
+/* =========================
+   ANNOUNCEMENTS
+========================= */
+
+.announcement-modal {
+    width: 650px;
+    max-width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 10px;
+    padding: 40px;
+}
+
+/* =========================================
+   ANNOUNCEMENT MODAL FONT
+========================================= */
+
+.announcement-modal,
+.announcement-modal input,
+.announcement-modal textarea,
+.announcement-modal label,
+.announcement-modal input::placeholder,
+.announcement-modal textarea::placeholder {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+
+/* =========================
+   ANNOUNCEMENT CARD
+========================= */
+
+.announcement-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+
+.announcement-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+
+.announcement-header h3 {
+    margin: 0 0 8px 0;
+    font-size: 19px;
+}
+
+
+.announcement-description {
+    margin-top: -8px;
+    color: #555;
+    font-size: 15px;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+
+.announcement-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #777;
+    font-size: 13px;
+}
+
+
+.announcement-date i {
+    color: #f58b00;
+    margin-right: 5px;
+}
+
+
+/* =========================
+   ANNOUNCEMENT STATUS
+========================= */
+
+.announcement-status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+.status-upcoming {
+    background: #fff3cd;
+    color: #856404;
+}
+
+
+.status-active {
+    background: #d4edda;
+    color: #155724;
+}
+
+
+.status-expired {
+    background: #e9ecef;
+    color: #6c757d;
+}
+
+
+/* =========================
+   ANNOUNCEMENT ACTIONS
+========================= */
+
+.announcement-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+
+.btn.edit-announcement {
+    background: #3498db;
+    color: white;
+}
+
+
+.btn.delete-announcement {
+    background: #e74c3c;
+    color: white;
+}
+
+
+.announcement-actions .btn {
+    margin-right: 0;
+}
+
+
+/* =========================
+   EMPTY ANNOUNCEMENT
+========================= */
+
+.empty-message {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    color: #888;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+
+/* Contact Admin */
+.support-card {
+    background: #ffffff;
+    padding: 22px;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.support-card h3,
+.support-card h4 {
+    margin-top: 0;
+    color: #444444;
+}
+
+.support-card .form-group {
+    margin-bottom: 16px;
+}
+
+.support-card label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 600;
+}
+
+.support-card input,
+.support-card select,
+.support-card textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #dddddd;
+    border-radius: 7px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.support-card textarea {
+    resize: vertical;
+}
+
+.support-feedback {
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+#restaurantSupportRequestList .support-card {
+    background: #fffbf0;
+    border: 1px solid #f3e5c5;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 12px;
+}
+
+.my-support-conversation {
+    margin: 14px 0;
+    padding: 14px;
+    background: #faf8f3;
+    border: 1px solid #eee5d8;
+    border-radius: 10px;
+}
+
+.my-support-conversation > strong {
+    display: block;
+    margin-bottom: 12px;
+    color: #444444;
+    font-size: 14px;
+}
+
+.my-support-message {
+    max-width: 90%;
+    margin: 10px 0;
+    padding: 10px 12px;
+    border-radius: 9px;
+    overflow-wrap: anywhere;
+}
+
+.my-support-message-admin {
+    margin-right: auto;
+    background: #e6f0ff;
+}
+
+.my-support-message-user {
+    margin-left: auto;
+    background: #fff0d6;
+}
+
+.my-support-message strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #b87508;
+    font-size: 12px;
+}
+
+.my-support-message p {
+    margin: 0 0 6px;
+    color: #444444;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+.my-support-message small {
+    display: block;
+    color: #888888;
+    font-size: 10px;
+    text-align: right;
+}
+
+.my-support-no-reply {
+    color: #888888;
+    font-size: 12px;
+    font-style: italic;
+}
+
+#supportMessage {
+    color: green;
+}
+
+/* Restaurant Support Request Header */
+.restaurant-support-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.restaurant-support-header h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #000000;
+    overflow-wrap: anywhere;
+}
+
+.restaurant-support-date {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 8px 0 14px;
+    color: #888888;
+    font-size: 11px;
+}
+
+.restaurant-support-date i {
+    font-size: 11px;
+    color: #f58b00;
+}
+
+#restaurantSupportRequestList .support-card p {
+    font-size: 15px;
+    color:#444444;
+}
+
+/* Support Request Status */
+.support-status {
+    display: inline-block;
+    flex-shrink: 0;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.support-status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.support-status-in-progress {
+    background: #cfe2ff;
+    color: #084298;
+}
+
+.support-status-resolved {
+    background: #d4edda;
+    color: #155724;
+}
+
+.conversation-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin: 12px auto;
+    padding: 8px 16px;
+    background: #fff0d6;
+    color: #ffa10a;
+    border: 1px solid #f3dfbd;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.conversation-toggle:hover {
+    background: #ffe6bd;
+}
+
+.conversation-toggle i:last-child {
+    margin-left: 4px;
+}
+
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 900px) {
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .table-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .profile-card {
+        width: 100%;
+    }
+
+    .sidebar {
+        width: 180px;
+    }
+
+    .opening-day {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .opening-sessions {
+        width: 100%;
+    }
+
+    .opening-session {
+        flex-wrap: wrap;
+    }
+
+    .opening-session input[type="time"] {
+        width: 140px;
+    }
+    
+}

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/register.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="register-container">
+        <div class="register-card">
+
+            <div class="icon">
+                <i class="fa-solid fa-user-plus"></i>
+            </div>
+
+            <h1>Create Account</h1>
+
+            <p style="margin-bottom:20px;color:#666;">
+                Choose your account type to continue.
+            </p>
+
+            <form id="registerForm" enctype="multipart/form-data">
+
+                <!-- Account Type -->
+                <div class="input-group">
+                    <label for="role">Account Type</label>
+                    <select id="role" required>
+                        <option value="user">User</option>
+                        <option value="restaurant">Restaurant</option>
+                    </select>
+                </div>
+
+                <!-- USER FIELDS -->
+                <div id="userFields">
+
+                    <div class="input-group">
+                        <label for="username">Username</label>
+                        <input
+                            type="text"
+                            id="username"
+                            required>
+                    </div>
+
+                </div>
+
+                <!-- RESTAURANT FIELDS -->
+                <div id="restaurantFields" style="display:none;">
+
+                    <div class="input-group">
+                        <label for="restaurantName">
+                            Restaurant Name
+                        </label>
+                        <input
+                            type="text"
+                            id="restaurantName">
+                    </div>
+
+                    <!-- HAS BRANCH RADIO -->
+                    <div class="input-group">
+                        <label>Does your restaurant have branch?</label>
+
+                        <div class="radio-row">
+
+                            <label class="radio-option">
+                                <input type="radio" name="hasBranch" value="yes" id="branchYes">
+                                Yes
+                            </label>
+
+                            <label class="radio-option">
+                                <input type="radio" name="hasBranch" value="no" id="branchNo" checked>
+                                No
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <!-- BRANCH INPUT -->
+                    <div class="input-group" id="branchField" style="display:none;">
+                        <label for="branch">Branch Name</label>
+                        <input type="text" id="branch">
+                    </div>
+
+                    <!-- ADDRESS -->
+                    <div class="input-group">
+                        <label for="address">Restaurant Address</label>
+                        <input type="text" id="address">
+                    </div>
+
+                    <!-- SSM NUMBER -->
+                    <div class="input-group">
+                        <label for="ssmNumber">SSM Number</label>
+                        <input
+                            type="text"
+                            id="ssmNumber"
+                            placeholder="e.g. 123456-X">
+                    </div>
+
+                    <!-- SSM DOCUMENT -->
+                    <div class="input-group">
+                        <label for="ssmFile">
+                            Upload SSM Certificate
+                        </label>
+
+                        <label for="ssmFile" class="file-input">
+
+                            <span id="ssmFileNameDisplay">
+                                No file chosen
+                            </span>
+
+                            <span class="choose-btn">
+                                Choose File
+                            </span>
+
+                            <input
+                                type="file"
+                                id="ssmFile"
+                                accept=".pdf,.jpg,.jpeg,.png"
+                                required>
+
+                        </label>
+                    </div>
+
+                </div>
+
+                <!-- COMMON FIELDS -->
+
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        required>
+                </div>
+
+                <div class="input-group">
+                    <label for="confirm-password">
+                        Confirm Password
+                    </label>
+                    <input
+                        type="password"
+                        id="confirm-password"
+                        required>
+                </div>
+
+                <button type="submit">
+                    Register
+                </button>
+
+            </form>
+
+            <p class="login-text">
+                Already have an account?
+                <a href="login.html">Login here</a>
+            </p>
+
+        </div>
+    </div>
+
+    <script>
+
+        const roleSelect = document.getElementById("role");
+
+        const userFields = document.getElementById("userFields");
+        const restaurantFields = document.getElementById("restaurantFields");
+
+        const username = document.getElementById("username");
+        const restaurantName = document.getElementById("restaurantName");
+        const ssmFile = document.getElementById("ssmFile");
+
+        function updateForm() {
+
+            if (roleSelect.value === "restaurant") {
+
+                userFields.style.display = "none";
+                restaurantFields.style.display = "block";
+
+                username.required = false;
+
+                restaurantName.required = true;
+                document.getElementById("address").required = true;
+                document.getElementById("ssmNumber").required = true;
+                ssmFile.required = true;
+
+            }
+            else {
+
+                userFields.style.display = "block";
+                restaurantFields.style.display = "none";
+
+                username.required = true;
+
+                restaurantName.required = false;
+                document.getElementById("address").required = false;
+                document.getElementById("ssmNumber").required = false;
+                ssmFile.required = false;
+
+            }
+
+        }
+
+        roleSelect.addEventListener("change", updateForm);
+
+        const ssmFileNameDisplay =
+            document.getElementById("ssmFileNameDisplay");
+
+        ssmFile.addEventListener("change", function () {
+
+            if (this.files.length > 0) {
+
+                ssmFileNameDisplay.textContent =
+                    this.files[0].name;
+
+                ssmFileNameDisplay.style.color = "#333";
+
+            }
+            else {
+
+                ssmFileNameDisplay.textContent =
+                    "No file chosen";
+
+                ssmFileNameDisplay.style.color = "#666";
+
+            }
+
+        });
+
+        ssmFile.addEventListener("invalid", function () {
+
+            if (this.validity.valueMissing) {
+                this.setCustomValidity("Please upload the SSM file.");
+            }
+
+        });
+
+        ssmFile.addEventListener("change", function () {
+
+            this.setCustomValidity("");
+
+        });
+
+        // Initialize on page load
+        updateForm();
+
+    </script>
+
+    <script src="js/auth.js"></script>
+
+</body>
+</html>

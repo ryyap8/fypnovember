@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodRoutes</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+
+        <div class="logo">
+            <i class="fa-solid fa-utensils"></i>  FoodRoutes
+        </div>
+
+        <div class="nav-center" id="navCenter">
+
+            <a href="#">
+            <i class="fa-solid fa-bowl-food"></i>
+            Discover Restaurants
+            </a>
+
+            <a href="#">
+            <i class="fa-solid fa-chart-line"></i>
+            Analytics
+            </a>
+
+            </div>
+
+            <div class="nav-right" id="navRight">
+
+            <a href="login.html">
+            Login
+            </a>
+
+            <button onclick="window.location='register.html'">
+            Register
+            </button>
+
+        </div>
+
+    </nav>
+
+    <!-- Discover Foods Content -->
+    <section class="container">
+
+        <h1>Discover Restaurants</h1>
+
+        <div class="filter-box">
+            
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="Search restaurants, places..."
+            >
+
+            <select id="cuisineFilter">
+                <option value="">All Cuisines</option>
+                <option value="Malaysian">Malaysian</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Korean">Korean</option>
+                <option value="Thai">Thai</option>
+                <option value="Taiwanese">Taiwanese</option>
+                <option value="Indian">Indian</option>
+                <option value="Western">Western</option>
+                <option value="Italian">Italian</option>
+                <option value="Mexican">Mexican</option>
+                <option value="Others">Others</option>
+            </select>
+            
+            <select id="halalFilter">
+                <option value="">All Halal Statuses</option>
+                <option value="Halal">Halal</option>
+                <option value="Non-Halal">Non-Halal</option>
+            </select>
+
+            <select id="priceFilter">
+                <option value="">All Prices</option>
+                <option value="$">$ (Below or equal to RM15)</option>
+                <option value="$$">$$ (RM15-29.9)</option>
+                <option value="$$$">$$$ (RM30-49.9)</option>
+                <option value="$$$$">$$$$ (Above or equal to RM50)</option>
+            </select>
+
+            <select id="sortFilter">
+                <option value="">Sort By</option>
+                <option value="rating">Highest Rated</option>
+                <option value="reviews">Most Reviewed</option>
+                <option value="priceLow">Price: Low to High</option>
+                <option value="priceHigh">Price: High to Low</option>
+            </select>
+
+            <button id="resetFilters" class="reset-btn">
+                Reset
+            </button>
+
+        </div>
+
+        <p id="restaurantCount" class="food-count"></p>
+
+        <div id="restaurantContainer" class="food-grid"></div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 FoodRoutes. Discover, Plan, Enjoy.
+    </footer>
+
+    <!-- FLOATING CONTACT ADMIN BUTTON -->
+    <button
+        id="contactAdminButton"
+        class="contact-admin-button"
+        type="button"
+        aria-label="Contact Admin"
+        title="Contact Admin"
+        style="display: none;"
+    >
+        <i class="fa-solid fa-headset"></i>
+    </button>
+
+    
+    <!-- CONTACT SUPPORT PANEL -->
+    <div id="contactSupportPanel" class="contact-support-panel" style="display: none;">
+
+        <div class="support-panel-header">
+            <h3>Contact Admin</h3>
+            <button id="closeSupportPanel" type="button" aria-label="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <p class="support-panel-intro">
+            Need help with FoodRoutes? Send us a message.
+        </p>
+
+        <form id="supportRequestForm">
+
+            <label for="supportCategory">Category</label>
+            <select id="supportCategory" name="category" required>
+                <option value="">Select a category</option>
+                <option value="Account">Account</option>
+                <option value="Restaurant">Restaurant</option>
+                <option value="Routes">Routes</option>
+                <option value="Technical Issue">Technical Issue</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="supportSubject">Subject</label>
+            <input
+                type="text"
+                id="supportSubject"
+                name="subject"
+                placeholder="Enter your subject"
+                maxlength="150"
+                required
+            >
+
+            <label for="supportDescription">Description</label>
+            <textarea
+                id="supportDescription"
+                name="description"
+                placeholder="Describe your problem..."
+                rows="4"
+                maxlength="3000"
+                required
+            ></textarea>
+
+            <button type="submit" class="support-submit-btn">
+                Submit Request
+            </button>
+
+            <p id="supportFormMessage" role="status"></p>
+
+        </form>
+        
+        <!-- MY SUPPORT REQUESTS -->
+        <div class="my-support-requests">
+            <h3 class="my-support-title">My Support Requests</h3>
+
+            <div id="mySupportRequestsContainer">
+                <p class="my-support-loading">Loading your requests...</p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="/js/script.js"></script>
+    <script src="/js/navbar.js"></script>
+    
+</body>
+
+</html>

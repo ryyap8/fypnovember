@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Restaurant Details</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/restaurant-details.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+
+        <div class="logo">
+            <i class="fa-solid fa-utensils"></i> FoodRoutes
+        </div>
+
+        <div class="nav-center" id="navCenter"></div>
+
+        <div class="nav-right" id="navRight"></div>
+
+    </nav>
+
+
+    <!-- Restaurant Details Content -->
+    <section class="food-details-container">
+
+        <div class="food-details-box">
+
+            <div class="top-content">
+
+                <div class="food-image">
+
+                    <img id="restaurantImage" src="" alt="Restaurant Image">
+
+                </div>
+
+
+                <div class="food-info">
+
+                    <div class="food-title-row">
+
+                        <h1 id="restaurantName"></h1>
+
+                        <div class="restaurant-actions">
+
+                            <i class="fa-regular fa-heart favourite-btn"
+                            id="favouriteBtn"
+                            title="Add to favourites"></i>
+
+                            <i class="fa-regular fa-share-from-square share-btn"
+                            id="shareBtn"
+                            title="Share restaurant"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="top-row">
+
+                        <p class="rating">
+
+                            <i class="fa-solid fa-star"></i>
+
+                            <span id="restaurantRating"></span>
+
+                            (<span id="restaurantTotalRatings"></span>)
+
+                        </p>
+
+                        <div class="price-range" id="restaurantPrice"></div>
+
+                        <div class="tags">
+
+                            <span id="restaurantCuisine"></span>
+
+                            <span id="restaurantHalalStatus"></span>
+
+                        </div>
+
+                    </div>
+
+                    <p class="restaurantDescription"
+                       id="restaurantDescription"></p>
+
+
+                    <div class="address-row">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <p class="address" id="restaurantAddress"></p>
+
+                    </div>
+
+
+                    <a id="restaurantGoogleMapsLink"
+                       class="googleMapsLink"
+                       target="_blank">
+
+                        View on Google Maps
+
+                    </a>
+
+
+                    <div class="opening-hours-row">
+
+                        <i class="fa-regular fa-clock"></i>
+
+                        <div class="opening-hours">
+
+                            <button
+                                type="button"
+                                id="openingHoursBtn"
+                                class="opening-hours-btn"
+                            >
+
+                                <span>Opening Hours</span>
+
+                                <i class="fa-solid fa-chevron-down"></i>
+
+                            </button>
+
+
+                            <div
+                                id="restaurantOpeningStatus"
+                                class="opening-status"
+                            ></div>
+
+
+                            <div
+                                id="openingHoursSchedule"
+                                class="opening-hours-schedule"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-number-row">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        <p class="contact-number">
+                            <span id="restaurantContactNumber"></span>
+                        </p>
+
+                        <button
+                            type="button"
+                            id="copyContactNumber"
+                            class="copy-contact-btn"
+                            title="Copy contact number"
+                        >
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+
+                    </div>
+
+
+                    <!-- Social Media -->
+                    <div
+                        id="socialMediaSection"
+                        class="social-media-section"
+                        style="display:none;"
+                    >
+
+                        <h3>Follow Us</h3>
+
+                        <div class="social-media-links">
+
+                            <a
+                                id="facebookLink"
+                                class="social-media-link facebook"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                title="Facebook"
+                            >
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+
+                            <a
+                                id="instagramLink"
+                                class="social-media-link instagram"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                title="Instagram"
+                            >
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+
+                            <a
+                                id="tiktokLink"
+                                class="social-media-link tiktok"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                title="TikTok"
+                            >
+                                <i class="fa-brands fa-tiktok"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Restaurant History -->
+                    <button id="historyBtn" class="culture-btn">
+
+                        <i class="fa-solid fa-scroll"></i>
+
+                        View Restaurant History
+
+                    </button>
+
+
+                    <div id="historyBox" class="culture-box">
+
+                        <h3>Restaurant History</h3>
+
+                        <p id="restaurantHistory"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Menu, Reviews and Announcements Tabs -->
+            <div class="restaurant-tabs">
+
+                <button class="tab-btn active" data-tab="menuTab">
+                    <i class="fa-solid fa-book-open"></i>
+                    Menu
+                </button>
+
+                <button class="tab-btn" data-tab="reviewTab">
+                    <i class="fa-solid fa-star"></i>
+                    Reviews
+                </button>
+
+                <button class="tab-btn" data-tab="announcementTab">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    Announcements
+                </button>
+
+            </div>
+
+
+                <!-- Menu Tab -->
+                <div id="menuTab" class="tab-content active">
+
+                <h2>Restaurant Menu</h2>
+
+                <!-- Menu Search & Filters -->
+                <div class="menu-controls">
+
+                    <!-- Search -->
+                    <div class="menu-search">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            id="menuSearch"
+                            placeholder="Search food, description or cultural information..."
+                        >
+
+                    </div>
+
+
+                    <!-- Sort -->
+                    <div class="menu-sort">
+
+                        <i class="fa-solid fa-arrow-down-wide-short"></i>
+
+                        <select id="menuSort">
+
+                            <option value="">Sort by Price</option>
+
+                            <option value="low-high">
+                                Price: Low to High
+                            </option>
+
+                            <option value="high-low">
+                                Price: High to Low
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Meal Type -->
+                    <div class="menu-meal-filter">
+
+                        <i class="fa-solid fa-plate-wheat"></i>
+
+                        <select id="menuMealType">
+
+                            <option value="">All Meal Types</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Clear -->
+                    <button id="clearMenuFilters" class="clear-menu-btn">
+
+                        <i class="fa-solid fa-rotate-left"></i>
+
+                        Clear
+
+                    </button>
+
+                </div>
+
+
+                <!-- Yellow Menu Box -->
+                <div class="menu-book">
+
+                    <div id="menuCategories" class="menu-categories"></div>
+
+                    <div id="restaurantMenu" class="restaurant-menu">
+
+                        <!-- Food items will be loaded here -->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Food Details Modal -->
+            <div id="foodDetailsModal" class="food-details-modal">
+
+                <div class="food-details-modal-content">
+
+                    <button class="food-modal-close" onclick="closeFoodDetails()">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+
+                    <div class="food-modal-image">
+                        <img id="modalFoodImage" src="" alt="Food">
+                    </div>
+
+                    <div class="food-modal-info">
+
+                        <div class="food-modal-title-row">
+                            <h2 id="modalFoodName"></h2>
+                            <span id="modalFoodPrice"></span>
+                        </div>
+
+                        <div class="food-modal-tags">
+                            <span id="modalFoodCategory"></span>
+                            <span id="modalFoodMealType"></span>
+                        </div>
+
+                        <div class="food-modal-section">
+
+                            <h3>
+                                <i class="fa-solid fa-align-left"></i>
+                                Description
+                            </h3>
+
+                            <p id="modalFoodDescription"></p>
+
+                        </div>
+
+                        <div class="food-modal-section cultural-section">
+
+                            <h3>
+                                <i class="fa-solid fa-earth-asia"></i>
+                                Cultural Information
+                            </h3>
+
+                            <p id="modalFoodCulturalInfo"></p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Reviews Tab -->
+            <div id="reviewTab" class="tab-content">
+
+                <div class="review-section">
+
+                    <h2>Ratings & Reviews</h2>
+
+                    <div class="review-box">
+
+                        <h3>Write a Review</h3>
+
+                        <div class="star-rating" id="starRating">
+
+                            <i class="fa-solid fa-star" data-value="1"></i>
+                            <i class="fa-solid fa-star" data-value="2"></i>
+                            <i class="fa-solid fa-star" data-value="3"></i>
+                            <i class="fa-solid fa-star" data-value="4"></i>
+                            <i class="fa-solid fa-star" data-value="5"></i>
+
+                        </div>
+
+                        <textarea placeholder="Share your experience..."></textarea>
+
+                        <button class="submit-review-btn">
+                            Submit Review
+                        </button>
+
+                    </div>
+
+                    <div id="reviewList">
+
+                        <div class="review-list-header">
+
+                            <h3 class="review-count"></h3>
+
+                            <div class="review-sort">
+
+                                <label for="reviewSort">Sort by:</label>
+
+                                <select id="reviewSort">
+                                    <option value="newest">Newest</option>
+                                    <option value="highest">Highest Rating</option>
+                                    <option value="lowest">Lowest Rating</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Announcements Tab -->
+            <div id="announcementTab" class="tab-content">
+
+                <div class="announcement-section">
+
+                    <h2>Announcements</h2>
+
+                    <div id="restaurantAnnouncements">
+
+                        <!-- Announcements will be loaded here -->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 FoodRoutes. Discover, Plan, Enjoy.
+
+    </footer>
+
+
+    <script src="/js/navbar.js"></script>
+
+    <script src="/js/restaurant-details.js"></script>
+
+</body>
+</html>

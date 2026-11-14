@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Generate Food Route</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/routes-generated.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <!-- ================================
+         NAVIGATION BAR
+    ================================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <i class="fa-solid fa-utensils"></i>
+            FoodRoutes
+        </div>
+
+        <div class="nav-center" id="navCenter"></div>
+
+        <div class="nav-right" id="navRight"></div>
+
+    </nav>
+
+
+    <!-- ================================
+         PAGE HEADER
+    ================================= -->
+
+    <section class="section header">
+
+        <h1>
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            Generate Your Food Route
+        </h1>
+
+        <p>
+            Tell us your preferences and let the system recommend
+            suitable restaurants for your meals.
+        </p>
+
+    </section>
+
+
+    <!-- ================================
+         GENERATION FORM
+    ================================= -->
+
+    <section class="section generated-container">
+
+        <div class="generated-card">
+
+            <!-- Card Header -->
+
+            <div class="generated-card-header">
+
+                <div class="generated-icon">
+                    <i class="fa-solid fa-route"></i>
+                </div>
+
+                <div>
+
+                    <h2>Route Preferences</h2>
+
+                    <p>
+                        Set your preferences before generating
+                        your food route.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 ROUTE NAME
+            ========================== -->
+
+            <div class="form-group">
+
+                <label for="routeName">
+                    Route Name
+                </label>
+
+                <input
+                    type="text"
+                    id="routeName"
+                    placeholder="e.g. Weekend Food Trip"
+                >
+
+            </div>
+
+
+            <!-- =========================
+                 DATE + LOCATION
+            ========================== -->
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="routeDate">
+                        Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="routeDate"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="location">
+                        Location
+                    </label>
+
+                    <select id="location">
+
+                        <option value="">
+                            Select location
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 BUDGET
+            ========================== -->
+
+            <div class="form-group">
+
+                <label for="budget">
+                    Daily Budget (RM)
+                </label>
+
+                <div class="input-with-icon">
+
+                    <span>RM</span>
+
+                    <input
+                        type="number"
+                        id="budget"
+                        min="1"
+                        step="0.01"
+                        placeholder="e.g. 50"
+                    >
+
+                </div>
+
+                <small>
+                    Your total budget for the selected meals.
+                </small>
+
+            </div>
+
+
+            <!-- =========================
+                 MEALS
+            ========================== -->
+
+            <div class="form-group">
+
+                <label>
+                    Meals
+                </label>
+
+                <p class="form-description">
+                    Select the meals you want to include in your route.
+                </p>
+
+
+                <div class="meal-options">
+
+                    <!-- Breakfast -->
+
+                    <label class="meal-option">
+
+                        <input
+                            type="checkbox"
+                            class="meal-checkbox"
+                            value="Breakfast"
+                        >
+
+                        <div class="meal-option-content">
+
+                            <div class="meal-option-icon">
+                                <i class="fa-solid fa-mug-hot"></i>
+                            </div>
+
+                            <div>
+
+                                <strong>Breakfast</strong>
+
+                                <span>
+                                    Start your day with a good meal
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </label>
+
+
+                    <!-- Lunch -->
+
+                    <label class="meal-option">
+
+                        <input
+                            type="checkbox"
+                            class="meal-checkbox"
+                            value="Lunch"
+                        >
+
+                        <div class="meal-option-content">
+
+                            <div class="meal-option-icon">
+                                <i class="fa-solid fa-bowl-food"></i>
+                            </div>
+
+                            <div>
+
+                                <strong>Lunch</strong>
+
+                                <span>
+                                    Find a satisfying lunch
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </label>
+
+
+                    <!-- Dinner -->
+
+                    <label class="meal-option">
+
+                        <input
+                            type="checkbox"
+                            class="meal-checkbox"
+                            value="Dinner"
+                        >
+
+                        <div class="meal-option-content">
+
+                            <div class="meal-option-icon">
+                                <i class="fa-solid fa-moon"></i>
+                            </div>
+
+                            <div>
+
+                                <strong>Dinner</strong>
+
+                                <span>
+                                    End your day with a great meal
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 OPTIONAL FILTERS
+            ========================== -->
+
+            <div class="filter-section">
+
+                <div class="filter-title">
+
+                    <i class="fa-solid fa-sliders"></i>
+
+                    <span>
+                        Optional Preferences
+                    </span>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <!-- Cuisine -->
+
+                    <div class="form-group">
+
+                        <label for="cuisine">
+                            Cuisine
+                        </label>
+
+                        <select id="cuisine">
+
+                            <option value="">
+                                Any Cuisine
+                            </option>
+
+                            <option value="Malaysian">
+                                Malaysian
+                            </option>
+
+                            <option value="Chinese">
+                                Chinese
+                            </option>
+
+                            <option value="Indian">
+                                Indian
+                            </option>
+
+                            <option value="Japanese">
+                                Japanese
+                            </option>
+
+                            <option value="Korean">
+                                Korean
+                            </option>
+
+                            <option value="Thai">
+                                Thai
+                            </option>
+
+                            <option value="Taiwanese">
+                                Taiwanese
+                            </option>
+
+                            <option value="Western">
+                                Western
+                            </option>
+
+                            <option value="Italian">
+                                Italian
+                            </option>
+
+                            <option value="Mexican">
+                                Mexican
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Halal -->
+
+                    <div class="form-group">
+
+                        <label for="halalStatus">
+                            Halal Status
+                        </label>
+
+                        <select id="halalStatus">
+
+                            <option value="">
+                                Any
+                            </option>
+
+                            <option value="Halal">
+                                Halal
+                            </option>
+
+                            <option value="Non-Halal">
+                                Non-Halal
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 GENERATE BUTTON
+            ========================== -->
+
+            <div class="generate-actions">
+
+                <button
+                    type="button"
+                    class="btn btn-orange"
+                    id="generateBtn"
+                >
+
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                    Generate Route
+
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 MESSAGE
+            ========================== -->
+
+            <div
+                id="generateMessage"
+                class="generate-message"
+            ></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================
+         RECOMMENDED RESULTS
+    ================================= -->
+
+    <section
+        class="section results-section"
+        id="resultsSection"
+        style="display: none;"
+    >
+
+        <div class="results-header">
+
+            <div>
+
+                <h2>
+                    Recommended Restaurants
+                </h2>
+
+                <p>
+                    Choose the food items you want from the
+                    recommended restaurants.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div id="generatedResults">
+
+            <!-- Results will be inserted by JavaScript -->
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================
+         FOOTER
+    ================================= -->
+
+    <footer>
+        © 2026 FoodRoutes. Discover, Plan, Enjoy.
+    </footer>
+
+
+    <!-- ================================
+         SCRIPTS
+    ================================= -->
+
+    <script src="/js/navbar.js"></script>
+    <script src="/js/routes-generated.js"></script>
+
+</body>
+
+</html>
